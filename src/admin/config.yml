@@ -1,0 +1,36 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "src/static/uploads"
+public_folder: "/static/uploads"
+
+
+collections:
+  - name: "years"
+    label: "Ročníky"
+    folder: "src/years"
+    create: true
+    slug: "{{year}}-{{title}}"
+    fields:
+      - { label: "Nadpis", name: "title", widget: "string" }
+      - { label: "Rok", name: "year", widget: "number", required: true}
+      - { label: "Text", name: "body", widget: "markdown", required: false }
+      - label: "Vysledky"
+        name: "vysledky"
+        widget: "list"
+        fields:
+        - { label: "Kategorie", name: "label", widget: "string" }
+        - { label: "Soubor", name: "file", widget: "file", media_library: { allow_multiple: false } }
+      - label: "Galerie"
+        name: "gallery"
+        widget: "list"
+        fields:
+          - { label: "Od koho", name: "from", widget: "string" , required: false}
+          - { label: "Náhledový obrázek", name: "image", widget: "image" }
+          - { label: "Odkaz", name: "link", widget: "string" }
+      - label: "Odkaz na video"
+        name: "video"
+        widget: "string"
+        required: false
+        default: ""
