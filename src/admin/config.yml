@@ -7,30 +7,32 @@ public_folder: "/static/uploads"
 
 
 collections:
-  - name: "years"
-    label: "Ročníky"
-    folder: "src/years"
+  - name: "pages"
+    label: "Stránky"
+    folder: "content/pages" # Složka, kam se ukládají .md soubory
     create: true
-    slug: "{{year}}-{{title}}"
+    slug: "{{slug}}"
     fields:
-      - { label: "Nadpis", name: "title", widget: "string" }
-      - { label: "Rok", name: "year", widget: "number", required: true}
-      - { label: "Text", name: "body", widget: "markdown", required: false }
-      - label: "Vysledky"
-        name: "vysledky"
-        widget: "list"
-        fields:
-        - { label: "Kategorie", name: "label", widget: "string" }
-        - { label: "Soubor", name: "file", widget: "file", media_library: { allow_multiple: false } }
-      - label: "Galerie"
-        name: "gallery"
-        widget: "list"
-        fields:
-          - { label: "Od koho", name: "from", widget: "string" , required: false}
-          - { label: "Náhledový obrázek", name: "image", widget: "image" }
-          - { label: "Odkaz", name: "link", widget: "string" }
-      - label: "Odkaz na video"
-        name: "video"
+      - { label: "Titulek", name: "title", widget: "string" }
+      
+      # TADY JE TEN VÝBĚR ŠABLONY:
+      - label: "Šablona stránky"
+        name: "layout"
+        widget: "select"
+        options:
+          - { label: "Standardní text", value: "default" }
+          - { label: "Kontaktní formulář", value: "contact" }
+          - { label: "Detail služby", value: "service" }
+        default: "default"
+
+      # Pole, které se zobrazí vždy
+      - { label: "Hlavní text", name: "body", widget: "markdown" }
+
+      # Podmíněná pole (volitelné):
+      # Pokud chceš, aby se některá pole ukázala jen pro určitou šablonu,
+      # můžeš použít 'condition' (vyžaduje novější verze Decap CMS)
+      - label: "Telefon pro kontakt"
+        name: "phone"
         widget: "string"
         required: false
-        default: ""
+        # Toto pole admin vyplní jen u šablony 'contact'
