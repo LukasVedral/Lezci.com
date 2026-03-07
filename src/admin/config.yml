@@ -10,18 +10,172 @@ public_folder: "/static/uploads"
 collections:
   - name: "content_sections"
     label: "Obsah stránek"
-    # Použijeme 'files' místo 'folder'
     files:
-      - label: "Kontaktní údaje"
-        name: "contact_data"
-        file: "content/contact.md" # Cesta k souboru, kde jsou data uložená
-        fields:
-          - { label: "Email", name: "email", widget: "string" }
-          - { label: "Telefon", name: "phone", widget: "string" }
 
-      - label: "Úvodní stránka - Texty"
-        name: "home_page"
-        file: "content/home.md"
+    #main stranka
+      - label: "O nás"
+        name: "about_us"
+        file: "content/about.md" # Cesta k souboru, kde jsou data uložená
         fields:
-          - { label: "Hlavní nadpis", name: "hero_title", widget: "string" }
-          - { label: "Podnadpis", name: "hero_subtitle", widget: "text" }
+          - { label: "obrázek", name: "about-image", widget: "image" }
+          - { label: "text", name: "about-text", widget: "markdown" }
+      - label: "Tréninkové skupiny"
+        name: "training_groups"
+        file: "content/training_groups.md"
+        fields:
+          - { label: "Rok", name: "years", widget: "text", default: "2025 / 2026" }
+          - label: "Dny"
+            name: "days"
+            widget: "list"
+            fields:
+              - { label: "Den", name: "day", widget: "text" }
+              - label: "Skupina"
+                name: "groups"
+                widget: "list"
+                fields:
+                  - { label: "Název skupiny", name: "group_name", widget: "text", default: "První skupina" }
+                  - { label: "Čas", name: "time", widget: "text", default: "18:00 - 19:30" }
+      - label: "Sponzoři"
+        name: "sponsors"
+        file: "content/sponsors.md"
+        fields:
+          - { label: "Název sponzora", name: "sponsor_name", widget: "text"}
+          - { label: "Logo sponzora", name: "sponsor_logo", widget: "image" }
+          - { label: "Webová stránka sponzora", name: "sponsor_website", widget: "string", required: false }
+
+      #pro verejnost
+      - label: "Nabízené akce"
+        name: "upcoming_events"
+        file: "content/upcoming_events.md"
+        fields:
+          - { label: "Nadpis", name: "title", widget: "string", default: "Lezení a lanové aktivity" }
+          - { label: "Text", name: "text", widget: "markdown" }
+
+          - { label: "Název akce", name: "event_name", widget: "string", default: "Výuka lezení" }
+          - { label: "Místa", name: "locations", widget: "string"}
+          - { label: "Popis akce", name: "event_description", widget: "markdown" }
+          - label: "Možnosti"
+            name: "options"
+            widget: "list"
+            fields:
+              - { label: "Název možnosti", name: "option_name", widget: "string", default: "Umělé stěny" }
+              - { label: "Popis možnosti", name: "option_description", widget: "markdown" }
+
+          - { label: "Název akce", name: "event_name", widget: "string", default: "Nízké lanové překážky" }
+          - { label: "Popis akce", name: "event_description", widget: "markdown" }
+          - label: "Možnosti"
+            name: "options"
+            widget: "list"
+            fields:
+              - { label: "Název možnosti", name: "option_name", widget: "string", default: "Mobilita" }
+              - { label: "Popis možnosti", name: "option_description", widget: "markdown" }
+
+      #oddil
+      - label: "Cena"
+        name: "pricing"
+        file: "content/pricing.md"
+        fields:
+          - { label: "Nadpis", name: "title", widget: "string", default: "Celková cena" }
+          - { label: "Text", name: "text", widget: "markdown" }
+
+      - label: "Náplň tréninku"
+        name: "training_content"
+        file: "content/training_content.md"
+        fields:
+          - { label: "Nadpis", name: "title", widget: "string", default: "Náplň tréninku" }
+          - { label: "Text", name: "text", widget: "markdown" }
+
+      - label: "Historie"
+        name: "history"
+        file: "content/history.md"
+        fields:
+          - { label: "Nadpis", name: "title", widget: "string", default: "Něco málo z historie" }
+          - { label: "Text", name: "text", widget: "markdown" }
+          - label: "Fotky z historie"
+            name: "historical_photos"
+            widget: "list"
+            fields:
+
+              - { label: "Fotka", name: "photo", widget: "image" }
+
+      - label: "Kontakt"
+        name: "contact"
+        file: "content/contact.md"
+        fields:
+          - { label: "Název spolku", name: "club_name", widget: "string", default: "Lezci.com, z.s." }
+          - { label: "Adresa", name: "address", widget: "string", default: "Na čekané 266/9, Liberec 15, 460 15" }
+          - { label: "Telefon", name: "phone", widget: "string", default: "+420 737 383 808" }
+          - label: "E-mail"
+            name: "email"
+            widget: "list"
+            fields:
+              - { label: "E-mailová adresa", name: "email_address", widget: "string"}
+          - { label: "IČO", name: "ico", widget: "string", default: "05627231" }
+          - { label: "Ředitel spolku", name: "director", widget: "string", default: "Jaroslav Kupr" }
+
+
+
+
+  - name: "Aktuaklity"
+    label: "Aktuality"
+    folder: "content/aktuality" 
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titulek", name: "title", widget: "string" }
+      - { label: "Datum", name: "date", widget: "datetime" }
+      - { label: "Obrázek", name: "thumbnail", widget: "image", required: false }
+      - { label: "Text aktuality", name: "body", widget: "markdown" }
+      - { label: "Autor", name: "author", widget: "string", default: "Jarda" }
+  - name: "Nadcházející akce"
+    label: "upcoming_events"
+    folder: "content/upcoming_events" 
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Název akce", name: "title", widget: "string" }
+      - { label: "Datum a čas", name: "datetime", widget: "datetime" }
+      - { label: "Místo konání", name: "location", widget: "string", required: false }
+      - { label: "Popis akce", name: "description", widget: "markdown" }
+
+    
+  - name: "Užitečná videa"
+    label: "useful_videos"
+    folder: "content/useful_videos" 
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Název videa", name: "title", widget: "string" }
+      - { label: "URL videa", name: "url", widget: "string" }
+      - { label: "Autor", name: "author", widget: "string" }
+
+  - name: "Důležité dokumenty"
+    label: "Important Documents"
+    folder: "content/important_documents"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nadpis", name: "title", widget: "string"}
+      - { label: "Soubor", name: "file", widget: "file" }
+
+  - name: "tým"
+    label: "team"
+    folder: "content/team"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Jméno", name: "name", widget: "string" }
+      - { label: "Role", name: "role", widget: "string", default: "trenér" }
+      - { label: "Fotka", name: "photo", widget: "image" }
+      - { label: "Telefon", name: "tel", widget: "string"}
+      - { label: "E-mail", name: "email", widget: "string" }
+
+  - name: "Galerie"
+    label: "Galerie"
+    folder: "content/galerie"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Název akce", name: "title", widget: "string" }
+      - { label: "Náhledová fotka", name: "photo", widget: "image" }
+      - { label: "Fotograf", name : "photographer", widget: "string" }
