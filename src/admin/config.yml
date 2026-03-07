@@ -9,30 +9,28 @@ public_folder: "/static/uploads"
 collections:
   - name: "pages"
     label: "Stránky"
-    folder: "content/pages" # Složka, kam se ukládají .md soubory
+    folder: "content/pages"
     create: true
     slug: "{{slug}}"
-    fields:
-      - { label: "Titulek", name: "title", widget: "string" }
-      
-      # TADY JE TEN VÝBĚR ŠABLONY:
-      - label: "Šablona stránky"
-        name: "layout"
-        widget: "select"
-        options:
-          - { label: "Standardní text", value: "default" }
-          - { label: "Kontaktní formulář", value: "contact" }
-          - { label: "Detail služby", value: "service" }
-        default: "default"
+    # Místo 'fields' použijeme 'types'
+    types:
+      - label: "Standardní text"
+        name: "default"
+        fields:
+          - { label: "Titulek", name: "title", widget: "string" }
+          - { label: "Hlavní text", name: "body", widget: "markdown" }
 
-      # Pole, které se zobrazí vždy
-      - { label: "Hlavní text", name: "body", widget: "markdown" }
+      - label: "Kontaktní formulář"
+        name: "contact"
+        fields:
+          - { label: "Titulek", name: "title", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Telefon", name: "phone", widget: "string" }
+          - { label: "Jméno", name: "contact_name", widget: "string" }
 
-      # Podmíněná pole (volitelné):
-      # Pokud chceš, aby se některá pole ukázala jen pro určitou šablonu,
-      # můžeš použít 'condition' (vyžaduje novější verze Decap CMS)
-      - label: "Telefon pro kontakt"
-        name: "phone"
-        widget: "string"
-        required: false
-        # Toto pole admin vyplní jen u šablony 'contact'
+      - label: "Detail služby"
+        name: "service"
+        fields:
+          - { label: "Název služby", name: "title", widget: "string" }
+          - { label: "Cena", name: "price", widget: "number" }
+          - { label: "Popis", name: "body", widget: "markdown" }
