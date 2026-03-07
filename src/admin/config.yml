@@ -8,22 +8,20 @@ public_folder: "/static/uploads"
 
 
 collections:
+  - name: "content_sections"
+    label: "Obsah stránek"
+    # Použijeme 'files' místo 'folder'
+    files:
+      - label: "Kontaktní údaje"
+        name: "contact_data"
+        file: "content/contact.md" # Cesta k souboru, kde jsou data uložená
+        fields:
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Telefon", name: "phone", widget: "string" }
 
-  - name: "standard_pages"
-    label: "Standardní stránky"
-    folder: "content/pages/standard" # Vlastní složka
-    create: true
-    fields:
-      - { label: "Titulek", name: "title", widget: "string" }
-      - { label: "Text", name: "body", widget: "markdown" }
-
-
-
-  - name: "contact_pages"
-    label: "Kontaktní stránky"
-    folder: "content/pages/contacts" # Jiná složka
-    create: true
-    fields:
-      - { label: "Titulek", name: "title", widget: "string" }
-      - { label: "Email", name: "email", widget: "string" }
-      - { label: "Telefon", name: "phone", widget: "string" }
+      - label: "Úvodní stránka - Texty"
+        name: "home_page"
+        file: "content/home.md"
+        fields:
+          - { label: "Hlavní nadpis", name: "hero_title", widget: "string" }
+          - { label: "Podnadpis", name: "hero_subtitle", widget: "text" }
