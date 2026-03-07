@@ -5,36 +5,24 @@ backend:
 media_folder: "src/static/uploads"
 public_folder: "/static/uploads"
 
+
 collections:
   - name: "pages"
     label: "Stránky"
     folder: "content/pages"
     create: true
-    slug: "{{slug}}"
     fields:
-          - label: "Šablona"
-            name: "layout"
-            widget: "select"
-            options:
-              - { label: "Standardní text", value: "default" }
-              - { label: "Kontaktní formulář", value: "contact" }
-            default: "default"
-
-          - { label: "Titulek", name: "title", widget: "string" }
-
-          # Skupina polí pro Text
-          - label: "Obsah stránky"
-            name: "default_fields"
-            widget: "object"
-            condition: { field: "layout", value: "default" }
+      - { label: "Název stránky (interní)", name: "title", widget: "string" }
+      - label: "Obsah stránky"
+        name: "sections"
+        widget: "list"
+        types:
+          - label: "Standardní text"
+            name: "default_section"
             fields:
-              - { label: "Hlavní text", name: "body", widget: "markdown" }
-
-          # Skupina polí pro Kontakt
-          - label: "Kontaktní údaje"
-            name: "contact_fields"
-            widget: "object"
-            condition: { field: "layout", value: "contact" }
+              - { label: "Text", name: "body", widget: "markdown" }
+          - label: "Kontaktní formulář"
+            name: "contact_section"
             fields:
               - { label: "Email", name: "email", widget: "string" }
               - { label: "Telefon", name: "phone", widget: "string" }
