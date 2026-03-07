@@ -11,18 +11,55 @@ collections:
     label: "Stránky"
     folder: "content/pages"
     create: true
+    slug: "{{slug}}"
     fields:
-      - { label: "Název stránky (interní)", name: "title", widget: "string" }
-      - label: "Obsah stránky"
-        name: "sections"
-        widget: "list"
-        types:
-          - label: "Standardní text"
-            name: "default_section"
-            fields:
-              - { label: "Text", name: "body", widget: "markdown" }
-          - label: "Kontaktní formulář"
-            name: "contact_section"
-            fields:
-              - { label: "Email", name: "email", widget: "string" }
-              - { label: "Telefon", name: "phone", widget: "string" }
+      # 1. Výběr šablony (tento prvek ovládá zbytek formuláře)
+      - label: "Šablona stránky"
+        name: "layout"
+        widget: "select"
+        options:
+          - { label: "Standardní text", value: "default" }
+          - { label: "Kontaktní formulář", value: "contact" }
+          - { label: "Detail služby", value: "service" }
+        default: "default"
+
+      # 2. Společné pole (zobrazí se vždy)
+      - { label: "Titulek stránky", name: "title", widget: "string" }
+
+      # --- POLE PRO ŠABLONU: STANDARDNÍ TEXT ---
+      - label: "Hlavní text (Markdown)"
+        name: "body"
+        widget: "markdown"
+        condition: { field: "layout", value: "default" }
+
+      # --- POLE PRO ŠABLONU: KONTAKT ---
+      - label: "Kontaktní email"
+        name: "email"
+        widget: "string"
+        required: false
+        condition: { field: "layout", value: "contact" }
+
+      - label: "Telefon"
+        name: "phone"
+        widget: "string"
+        required: false
+        condition: { field: "layout", value: "contact" }
+
+      - label: "Adresa pobočky"
+        name: "address"
+        widget: "text"
+        required: false
+        condition: { field: "layout", value: "contact" }
+
+      # --- POLE PRO ŠABLONU: DETAIL SLUŽBY ---
+      - label: "Cena služby"
+        name: "price"
+        widget: "string"
+        required: false
+        condition: { field: "layout", value: "service" }
+
+      - label: "Popis služby"
+        name: "service_description"
+        widget: "markdown"
+        required: false
+        condition: { field: "layout", value: "service" }
