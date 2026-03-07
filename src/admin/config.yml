@@ -5,7 +5,6 @@ backend:
 media_folder: "src/static/uploads"
 public_folder: "/static/uploads"
 
-
 collections:
   - name: "pages"
     label: "Stránky"
@@ -13,53 +12,27 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      # 1. Výběr šablony (tento prvek ovládá zbytek formuláře)
-      - label: "Šablona stránky"
-        name: "layout"
-        widget: "select"
-        options:
-          - { label: "Standardní text", value: "default" }
-          - { label: "Kontaktní formulář", value: "contact" }
-          - { label: "Detail služby", value: "service" }
-        default: "default"
+      - { label: "Titulek stránky (H1)", name: "title", widget: "string" }
+      
+      - label: "Typ obsahu / Šablona"
+        name: "content"
+        widget: "object"
+        # Tady se děje to kouzlo:
+        types:
+          - label: "Standardní text"
+            name: "default"
+            fields:
+              - { label: "Hlavní text", name: "body", widget: "markdown" }
 
-      # 2. Společné pole (zobrazí se vždy)
-      - { label: "Titulek stránky", name: "title", widget: "string" }
+          - label: "Kontaktní formulář"
+            name: "contact"
+            fields:
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Telefon", name: "phone", widget: "string" }
+              - { label: "Jméno", name: "contact_name", widget: "string" }
 
-      # --- POLE PRO ŠABLONU: STANDARDNÍ TEXT ---
-      - label: "Hlavní text (Markdown)"
-        name: "body"
-        widget: "markdown"
-        condition: { field: "layout", value: "default" }
-
-      # --- POLE PRO ŠABLONU: KONTAKT ---
-      - label: "Kontaktní email"
-        name: "email"
-        widget: "string"
-        required: false
-        condition: { field: "layout", value: "contact" }
-
-      - label: "Telefon"
-        name: "phone"
-        widget: "string"
-        required: false
-        condition: { field: "layout", value: "contact" }
-
-      - label: "Adresa pobočky"
-        name: "address"
-        widget: "text"
-        required: false
-        condition: { field: "layout", value: "contact" }
-
-      # --- POLE PRO ŠABLONU: DETAIL SLUŽBY ---
-      - label: "Cena služby"
-        name: "price"
-        widget: "string"
-        required: false
-        condition: { field: "layout", value: "service" }
-
-      - label: "Popis služby"
-        name: "service_description"
-        widget: "markdown"
-        required: false
-        condition: { field: "layout", value: "service" }
+          - label: "Detail služby"
+            name: "service"
+            fields:
+              - { label: "Popis služby", name: "description", widget: "markdown" }
+              - { label: "Cena", name: "price", widget: "string" }
