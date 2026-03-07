@@ -12,30 +12,29 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - label: "Šablona"
-        name: "layout"
-        widget: "select"
-        options:
-          - { label: "Standardní text", value: "default" }
-          - { label: "Kontaktní formulář", value: "contact" }
-        default: "default"
+          - label: "Šablona"
+            name: "layout"
+            widget: "select"
+            options:
+              - { label: "Standardní text", value: "default" }
+              - { label: "Kontaktní formulář", value: "contact" }
+            default: "default"
 
-      # Společné pole pro všechny
-      - { label: "Titulek", name: "title", widget: "string" }
+          - { label: "Titulek", name: "title", widget: "string" }
 
-      # Pole viditelné jen pro 'default'
-      - label: "Hlavní text"
-        name: "text-content"
-        widget: "markdown"
-        condition: { field: "layout", value: "default" }
+          # Skupina polí pro Text
+          - label: "Obsah stránky"
+            name: "default_fields"
+            widget: "object"
+            condition: { field: "layout", value: "default" }
+            fields:
+              - { label: "Hlavní text", name: "body", widget: "markdown" }
 
-      # Pole viditelná jen pro 'contact'
-      - label: "Email"
-        name: "email"
-        widget: "string"
-        condition: { field: "layout", value: "contact" }
-      
-      - label: "Telefon"
-        name: "phone"
-        widget: "string"
-        condition: { field: "layout", value: "contact" }
+          # Skupina polí pro Kontakt
+          - label: "Kontaktní údaje"
+            name: "contact_fields"
+            widget: "object"
+            condition: { field: "layout", value: "contact" }
+            fields:
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Telefon", name: "phone", widget: "string" }
