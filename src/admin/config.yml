@@ -11,26 +11,18 @@ collections:
     label: "Stránky"
     folder: "content/pages"
     create: true
-    slug: "{{slug}}"
-    # Místo 'fields' použijeme 'types'
-    types:
-      - label: "Standardní text"
-        name: "default"
-        fields:
-          - { label: "Titulek", name: "title", widget: "string" }
-          - { label: "Hlavní text", name: "body", widget: "markdown" }
-
-      - label: "Kontaktní formulář"
-        name: "contact"
-        fields:
-          - { label: "Titulek", name: "title", widget: "string" }
-          - { label: "Email", name: "email", widget: "string" }
-          - { label: "Telefon", name: "phone", widget: "string" }
-          - { label: "Jméno", name: "contact_name", widget: "string" }
-
-      - label: "Detail služby"
-        name: "service"
-        fields:
-          - { label: "Název služby", name: "title", widget: "string" }
-          - { label: "Cena", name: "price", widget: "number" }
-          - { label: "Popis", name: "body", widget: "markdown" }
+    fields:
+      - { label: "Název stránky (interní)", name: "title", widget: "string" }
+      - label: "Obsah stránky"
+        name: "sections"
+        widget: "list"
+        types:
+          - label: "Standardní text"
+            name: "default_section"
+            fields:
+              - { label: "Text", name: "body", widget: "markdown" }
+          - label: "Kontaktní formulář"
+            name: "contact_section"
+            fields:
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Telefon", name: "phone", widget: "string" }
