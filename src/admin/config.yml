@@ -25,7 +25,7 @@ collections:
 
       # Pole viditelné jen pro 'default'
       - label: "Hlavní text"
-        name: "body"
+        name: "text-content"
         widget: "markdown"
         condition: { field: "layout", value: "default" }
 
