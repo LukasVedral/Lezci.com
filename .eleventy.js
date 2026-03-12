@@ -1,8 +1,14 @@
 const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 
 module.exports = function(eleventyConfig) {
-  // Statické soubory
-    eleventyConfig.addPassthroughCopy({ "src/static": "static" });
+// Statické soubory
+  eleventyConfig.addPassthroughCopy({ "src/static": "static" });
+  
+  // TENTO ŘÁDEK CHYBÍ - kopíruje config pro CMS do složky admin
+  eleventyConfig.addPassthroughCopy({ "src/admin/config.yml": "admin/config.yml" });
+  
+  // Pokud máš v src/admin i nějaký admin.js, přidej i ten:
+  eleventyConfig.addPassthroughCopy({ "src/admin/admin.js": "admin/admin.js" });
 
   // Kolekce
   eleventyConfig.addCollection("years", collectionApi => {
