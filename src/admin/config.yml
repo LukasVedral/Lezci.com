@@ -45,14 +45,6 @@ collections:
                   - { label: "Název skupiny", name: "group_name", widget: "text", default: "První skupina" }
                   - { label: "Čas", name: "time", widget: "text", default: "18:00 - 19:30" }
 
-      - label: "Sponzoři"
-        name: "sponsors"
-        file: "content/sponsors.md"
-        fields:
-          - { label: "Název sponzora", name: "sponsor_name", widget: "text" }
-          - { label: "Logo sponzora", name: "sponsor_logo", widget: "image" }
-          - { label: "Webová stránka sponzora", name: "sponsor_website", widget: "string", required: false }
-
       # pro verejnost
       - label: "Nabízené akce (Stránka)"
         name: "upcoming_events_page"
@@ -181,3 +173,12 @@ collections:
       - { label: "Název akce", name: "title", widget: "string" }
       - { label: "Náhledová fotka", name: "photo", widget: "image" }
       - { label: "Fotograf", name: "photographer", widget: "string", required: false }
+  
+  - name: "sponsors"
+    label: "Sponzoři"
+    name: "sponsors"
+    file: "content/sponsors.md"
+    fields:
+      - { label: "Název sponzora", name: "sponsor_name", widget: "text" }
+      - { label: "Logo sponzora", name: "sponsor_logo", widget: "image" }
+      - { label: "Webová stránka sponzora", name: "sponsor_website", widget: "string", required: false }
