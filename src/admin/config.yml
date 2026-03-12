@@ -176,7 +176,9 @@ collections:
   
   - name: "sponsors"
     label: "Sponzoři"
-    file: "content/sponsors.md"
+    folder: "content/sponsors"
+    create: true
+    slug: "{{slug}}"
     fields:
       - { label: "Název sponzora", name: "sponsor_name", widget: "text" }
       - { label: "Logo sponzora", name: "sponsor_logo", widget: "image" }
