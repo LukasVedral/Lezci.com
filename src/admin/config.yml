@@ -176,7 +176,6 @@ collections:
   
   - name: "sponsors"
     label: "Sponzoři"
-    name: "sponsors"
     file: "content/sponsors.md"
     fields:
       - { label: "Název sponzora", name: "sponsor_name", widget: "text" }
