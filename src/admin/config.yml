@@ -10,6 +10,17 @@ collections:
     label: "Obsah stránek"
     files:
       # main stranka
+
+      - label: "Úvodní sekce"
+        name: "Hlavní obrázky"
+        file: "content/hero.md"
+        fields:
+          - label: "Obrázky"
+            name: "hero_images"
+            widget: "list"
+            fields:
+              - { label: "Obrázek", name: "image", widget: "image" }
+          
       - label: "O nás"
         name: "about_us"
         file: "content/about.md"
