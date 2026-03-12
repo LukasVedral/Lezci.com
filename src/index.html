@@ -12,18 +12,26 @@
 <body>
   <div class="header">
     <header class="hamburger-zone header--index"> 
-        <img class="header__bg" src="" alt="Obrázek Lezce">
-            <div class="hamburger-row hamburger-zone ">
-              <a class="logo" href="/index.html">
-                <img src="" alt="Lezci.com logo">
-              </a>
-            
-              <a href="javascript:void(0)" class="hamburger hamburger-btn hamburger-zone">
-                  <div class="spans"><span></span><span></span></div>
-                  <div class="spans"><span></span><span></span></div>
-                  <div class="spans"><span></span><span></span></div>
-              </a>
-          </div>
+      {% for item in collections.all %}
+        {% if item.filePathStem == "/content/hero" %}
+          <img 
+            class="header__bg" 
+            src="{{ item.data.hero_images[0].image }}" 
+            alt="Obrázek Lezce"
+          >
+        {% endif %}
+      {% endfor %}
+      <div class="hamburger-row hamburger-zone ">
+        <a class="logo" href="/index.html">
+          <img src="" alt="Lezci.com logo">
+        </a>
+      
+        <a href="javascript:void(0)" class="hamburger hamburger-btn hamburger-zone">
+          <div class="spans"><span></span><span></span></div>
+          <div class="spans"><span></span><span></span></div>
+          <div class="spans"><span></span><span></span></div>
+        </a>
+      </div>
           <nav class="hamburger-nav hamburger-zone">
               <ul>
                   <li><a lass="menu__item" href="/index">Domů</a></li>

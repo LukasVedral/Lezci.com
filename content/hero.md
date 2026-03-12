@@ -1,4 +1,4 @@
 ---
 hero_images:
-  - image: /static/uploads/herolezci.avif
+  - image: /uploads/herolezci.avif
 ---

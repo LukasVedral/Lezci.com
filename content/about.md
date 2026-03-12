@@ -1,8 +1,8 @@
 ---
-about-image: /static/uploads/about-photo.avif
-about-text: >-
+about-image: /uploads/about-photo.avif
+about-text: >
   Spolek **Lezci.com, z.s.** funguje primárně jako kroužek lezení pro děti od 9
-  let, ve spolupráci s **DDM Větrník** v Liberci.  Postupně jsme se
+  let, ve spolupráci s **DDM Větrník** v Liberci. Postupně jsme se
   transformovali z HO Větrník a ž do dnešní podoby. Tréninky lezení probíhají
   na **horolezecké stěně Šutr v Liberci**.
 

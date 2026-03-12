@@ -10,27 +10,26 @@ collections:
     label: "Obsah stránek"
     files:
       # main stranka
-
       - label: "Úvodní sekce"
-        name: "Hlavní obrázky"
-        file: "content/hero.md"
+        name: "hero"
+        file: "src/content/hero.md" # OPRAVENO
         fields:
           - label: "Obrázky"
             name: "hero_images"
             widget: "list"
             fields:
               - { label: "Obrázek", name: "image", widget: "image" }
-          
+
       - label: "O nás"
         name: "about_us"
-        file: "content/about.md"
+        file: "src/content/about.md" # OPRAVENO
         fields:
           - { label: "obrázek", name: "about-image", widget: "image" }
           - { label: "text", name: "about-text", widget: "markdown" }
 
       - label: "Tréninkové skupiny"
         name: "training_groups"
-        file: "content/training_groups.md"
+        file: "src/content/training_groups.md" # OPRAVENO
         fields:
           - { label: "Rok", name: "years", widget: "text", default: "2025 / 2026" }
           - label: "Dny"
@@ -45,14 +44,12 @@ collections:
                   - { label: "Název skupiny", name: "group_name", widget: "text", default: "První skupina" }
                   - { label: "Čas", name: "time", widget: "text", default: "18:00 - 19:30" }
 
-      # pro verejnost
       - label: "Nabízené akce (Stránka)"
         name: "upcoming_events_page"
-        file: "content/upcoming_events.md"
+        file: "src/content/upcoming_events.md" # OPRAVENO
         fields:
           - { label: "Hlavní Nadpis", name: "title", widget: "string", default: "Lezení a lanové aktivity" }
           - { label: "Úvodní Text", name: "text", widget: "markdown" }
-          # OPRAVA DUPLICITY: Akce jsou nyní v seznamu
           - label: "Seznam nabízených akcí"
             name: "events_list"
             widget: "list"
@@ -67,24 +64,23 @@ collections:
                   - { label: "Název možnosti", name: "option_name", widget: "string" }
                   - { label: "Popis možnosti", name: "option_description", widget: "markdown" }
 
-      # oddil
       - label: "Cena"
         name: "pricing"
-        file: "content/pricing.md"
+        file: "src/content/pricing.md" # OPRAVENO
         fields:
           - { label: "Nadpis", name: "title", widget: "string", default: "Celková cena" }
           - { label: "Text", name: "text", widget: "markdown" }
 
       - label: "Náplň tréninku"
         name: "training_content"
-        file: "content/training_content.md"
+        file: "src/content/training_content.md" # OPRAVENO
         fields:
           - { label: "Nadpis", name: "title", widget: "string", default: "Náplň tréninku" }
           - { label: "Text", name: "text", widget: "markdown" }
 
       - label: "Historie"
         name: "history"
-        file: "content/history.md"
+        file: "src/content/history.md" # OPRAVENO
         fields:
           - { label: "Nadpis", name: "title", widget: "string", default: "Něco málo z historie" }
           - { label: "Text", name: "text", widget: "markdown" }
@@ -96,7 +92,7 @@ collections:
 
       - label: "Kontakt"
         name: "contact"
-        file: "content/contact.md"
+        file: "src/content/contact.md" # OPRAVENO
         fields:
           - { label: "Název spolku", name: "club_name", widget: "string", default: "Lezci.com, z.s." }
           - { label: "Adresa", name: "address", widget: "string", default: "Na čekané 266/9, Liberec 15, 460 15" }
@@ -109,10 +105,10 @@ collections:
           - { label: "IČO", name: "ico", widget: "string", default: "05627231" }
           - { label: "Ředitel spolku", name: "director", widget: "string", default: "Jaroslav Kupr" }
 
-  # DYNAMICKÉ KOLEKCE (FOLDER)
+  # DYNAMICKÉ KOLEKCE (FOLDER) - VŠECHNY OPRAVENY NA src/content/...
   - name: "aktuality"
     label: "Aktuality"
-    folder: "content/aktuality"
+    folder: "src/content/aktuality"
     create: true
     slug: "{{slug}}"
     fields:
@@ -124,7 +120,7 @@ collections:
 
   - name: "upcoming_events_posts"
     label: "Kalendář akcí (jednotlivé)"
-    folder: "content/upcoming_events"
+    folder: "src/content/upcoming_events"
     create: true
     slug: "{{slug}}"
     fields:
@@ -135,7 +131,7 @@ collections:
 
   - name: "useful_videos"
     label: "Užitečná videa"
-    folder: "content/useful_videos"
+    folder: "src/content/useful_videos"
     create: true
     slug: "{{slug}}"
     fields:
@@ -145,7 +141,7 @@ collections:
 
   - name: "important_documents"
     label: "Důležité dokumenty"
-    folder: "content/important_documents"
+    folder: "src/content/important_documents"
     create: true
     slug: "{{slug}}"
     fields:
@@ -154,7 +150,7 @@ collections:
 
   - name: "team"
     label: "Tým"
-    folder: "content/team"
+    folder: "src/content/team"
     create: true
     slug: "{{slug}}"
     fields:
@@ -166,17 +162,17 @@ collections:
 
   - name: "galerie"
     label: "Galerie"
-    folder: "content/galerie"
+    folder: "src/content/galerie"
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "Název akce", name: "title", widget: "string" }
       - { label: "Náhledová fotka", name: "photo", widget: "image" }
       - { label: "Fotograf", name: "photographer", widget: "string", required: false }
-  
+
   - name: "sponsors"
     label: "Sponzoři"
-    folder: "content/sponsors"
+    folder: "src/content/sponsors"
     create: true
     slug: "{{slug}}"
     fields:

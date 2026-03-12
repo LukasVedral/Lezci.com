@@ -2,9 +2,7 @@ const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 
 module.exports = function(eleventyConfig) {
   // Statické soubory
-  eleventyConfig.addPassthroughCopy({ "src/static/uploads": "uploads" });
-  eleventyConfig.addPassthroughCopy({ "src/static": "static" });
-  eleventyConfig.addPassthroughCopy({ "src/admin/config.yml": "admin/config.yml" });
+    eleventyConfig.addPassthroughCopy({ "src/static": "static" });
 
   // Kolekce
   eleventyConfig.addCollection("years", collectionApi => {
@@ -39,6 +37,7 @@ module.exports = function(eleventyConfig) {
     dir: {
       input: "src",
       output: "_site"
-    }
+    },
+    htmlTemplateEngine: "njk"
   };
 };
