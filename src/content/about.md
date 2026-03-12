@@ -1,5 +1,5 @@
 ---
-about-image: /uploads/about-photo.avif
+about-image: /static//uploads/about-photo.avif
 about-text: >
   Spolek **Lezci.com, z.s.** funguje primárně jako kroužek lezení pro děti od 9
   let, ve spolupráci s **DDM Větrník** v Liberci. Postupně jsme se
