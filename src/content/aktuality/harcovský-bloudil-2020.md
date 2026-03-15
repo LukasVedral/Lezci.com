@@ -2,6 +2,7 @@
 author: Jarda
 title: Harcovský Bloudil 2020
 date: 2020-09-27T16:07:00.000+02:00
+youtube_video: FjOyRjY_Ed4
 ---
 Ahoj všem, 
 
