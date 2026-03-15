@@ -112,6 +112,7 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
+      - { label: "Autor", name: "author", widget: "string", default: "Jarda" }
       - { label: "Titulek", name: "title", widget: "string" }
       - { label: "Datum", name: "date", widget: "datetime" }
       - { label: "Obrázek", name: "thumbnail", widget: "image", required: false }
@@ -124,9 +125,12 @@ collections:
           - { label: "Název odkazu", name: "url_name", widget: "string", required: false }
           - { label: "Obrázek odkazu", name: "url_image", widget: "image", required: false }
           - { label: "Odkaz", name: "url", widget: "string" }
-
-
-      - { label: "Autor", name: "author", widget: "string", default: "Jarda" }
+      - label: "youtube video"
+        name: "youtube_video"
+        widget: "string"
+        required: false
+        hint: "Zadejte pouze ID videa z YouTube (např. pro https://www.youtube.com/watch?v=dQw4w9WgXcQ zadejte dQw4w9WgXcQ)"
+      
 
   - name: "upcoming_events_posts"
     label: "Kalendář akcí (jednotlivé)"
