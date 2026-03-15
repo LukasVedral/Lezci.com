@@ -116,6 +116,16 @@ collections:
       - { label: "Datum", name: "date", widget: "datetime" }
       - { label: "Obrázek", name: "thumbnail", widget: "image", required: false }
       - { label: "Text aktuality", name: "body", widget: "markdown" }
+      - name: "URL"
+        label: "Odkazy"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Název odkazu", name: "url_name", widget: "string", required: false }
+          - { label: "Obrázek odkazu", name: "url_image", widget: "image", required: false }
+          - { label: "Odkaz", name: "url", widget: "string" }
+
+
       - { label: "Autor", name: "author", widget: "string", default: "Jarda" }
 
   - name: "upcoming_events_posts"
