@@ -1,6 +1,11 @@
 ---
 author: Jarda
 title: Letní tábor 2022
-date: 2022-02-18T22:01:00.000+01:00
+date: 2022-11-15T22:01:00.000+01:00
+URL:
+  - url_image: /static/uploads/obrázek_2026-03-25_221600278.png
+    url: https://hovetrnik.rajce.idnes.cz/Letni_tabor_2022/
 ---
-Ahoj všem, letošní tábor plánujeme v termínu 15.-19. 8. 2022. Opět půjdeme systémem 2 dny dojížděcí a 3 dny v kempu. Letos plánujeme krásné prostředí Příhraz. Cenu se pokusíme vydat co nejdříve. Ahoj všem Jarda
+Ahoj všem, 
+
+nabízíme ohlédnutí za letním táborem 2022.
