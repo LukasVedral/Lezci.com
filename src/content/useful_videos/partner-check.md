@@ -1,5 +1,5 @@
 ---
-title: Zakládání lana do jistící pomůcky - kyblík
-url: https://www.youtube.com/watch?v=w__A1nCq8qA
+title: Navázání osmičkového uzlu na sedací úvazek
+url: https://www.youtube.com/watch?v=BL7SMinXk4g
 author: lezeckametodika
 ---
