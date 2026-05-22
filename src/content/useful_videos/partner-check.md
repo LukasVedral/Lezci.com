@@ -1,5 +1,5 @@
 ---
-title: Postavení jističe + Pozice lezce při spouštění
-url: https://www.youtube.com/watch?v=vLib4F5NxFo
+title: Jištění přes jistící pomůcku - kyblík
+url: https://www.youtube.com/watch?v=ZgnHKzdU2kQ
 author: lezeckametodika
 ---
