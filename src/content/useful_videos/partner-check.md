@@ -1,5 +1,5 @@
 ---
-title: Postupové jištění - cvakání expresek
-url: https://www.youtube.com/watch?v=j8dzcsYkeSY
+title: Postavení jističe + Pozice lezce při spouštění
+url: https://www.youtube.com/watch?v=vLib4F5NxFo
 author: lezeckametodika
 ---
