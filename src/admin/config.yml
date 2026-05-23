@@ -160,6 +160,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Nadpis", name: "title", widget: "string" }
+      - { label: "Popis", name: "description", widget: "text", required: false }
       - { label: "Soubor", name: "file", widget: "file" }
 
   - name: "team"
