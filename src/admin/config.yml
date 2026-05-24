@@ -184,6 +184,7 @@ collections:
     fields:
       - { label: "Název akce", name: "title", widget: "string" }
       - { label: "Náhledová fotka", name: "photo", widget: "image" }
+      - { label: "odkaz na galerii", name: "gallery_url", widget: "string"}
       - { label: "Fotograf", name: "photographer", widget: "string", required: false }
 
   - name: "sponsors"
