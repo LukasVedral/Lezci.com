@@ -171,7 +171,7 @@ collections:
     fields:
       - { label: "Jméno", name: "name", widget: "string" }
       - { label: "Role", name: "role", widget: "string", default: "trenér" }
-      - { label: "Fotka", name: "photo", widget: "image" }
+      - { label: "Fotka", name: "photo", widget: "image", required: false }
       - { label: "Telefon", name: "tel", widget: "string", required: false }
       - { label: "E-mail", name: "email", widget: "string", required: false }
       - { label: "Číslo skupiny", name: "group-num", widget: "number", required: false }
