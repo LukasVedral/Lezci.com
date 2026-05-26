@@ -31,7 +31,12 @@ collections:
         name: "training_groups"
         file: "src/content/training_groups.md" # OPRAVENO
         fields:
-          - { label: "Rok", name: "years", widget: "text", default: "2025 / 2026" }
+          - {
+              label: "Rok",
+              name: "years",
+              widget: "text",
+              default: "2025 / 2026",
+            }
           - label: "Dny"
             name: "days"
             widget: "list"
@@ -41,48 +46,95 @@ collections:
                 name: "groups"
                 widget: "list"
                 fields:
-                  - { label: "Název skupiny", name: "group_name", widget: "text", default: "První skupina" }
-                  - { label: "Čas", name: "time", widget: "text", default: "18:00 - 19:30" }
+                  - {
+                      label: "Název skupiny",
+                      name: "group_name",
+                      widget: "text",
+                      default: "První skupina",
+                    }
+                  - {
+                      label: "Čas",
+                      name: "time",
+                      widget: "text",
+                      default: "18:00 - 19:30",
+                    }
 
       - label: "Nabízené akce (Stránka)"
         name: "upcoming_events_page"
         file: "src/content/upcoming_events.md" # OPRAVENO
         fields:
-          - { label: "Hlavní Nadpis", name: "title", widget: "string", default: "Lezení a lanové aktivity" }
+          - {
+              label: "Hlavní Nadpis",
+              name: "title",
+              widget: "string",
+              default: "Lezení a lanové aktivity",
+            }
           - { label: "Úvodní Text", name: "text", widget: "markdown" }
           - label: "Seznam nabízených akcí"
             name: "events_list"
             widget: "list"
             fields:
               - { label: "Název akce", name: "event_name", widget: "string" }
-              - { label: "Místa konání", name: "locations", widget: "string", required: false }
-              - { label: "Popis akce", name: "event_description", widget: "markdown" }
+              - {
+                  label: "Místa konání",
+                  name: "locations",
+                  widget: "string",
+                  required: false,
+                }
+              - {
+                  label: "Popis akce",
+                  name: "event_description",
+                  widget: "markdown",
+                }
               - label: "Podrobnosti / Možnosti"
                 name: "options"
                 widget: "list"
                 fields:
-                  - { label: "Název možnosti", name: "option_name", widget: "string" }
-                  - { label: "Popis možnosti", name: "option_description", widget: "markdown" }
+                  - {
+                      label: "Název možnosti",
+                      name: "option_name",
+                      widget: "string",
+                    }
+                  - {
+                      label: "Popis možnosti",
+                      name: "option_description",
+                      widget: "markdown",
+                    }
 
       - label: "Cena"
         name: "pricing"
         file: "src/content/pricing.md" # OPRAVENO
         fields:
-          - { label: "Nadpis", name: "title", widget: "string", default: "Celková cena" }
+          - {
+              label: "Nadpis",
+              name: "title",
+              widget: "string",
+              default: "Celková cena",
+            }
           - { label: "Text", name: "text", widget: "markdown" }
 
       - label: "Náplň tréninku"
         name: "training_content"
         file: "src/content/training_content.md" # OPRAVENO
         fields:
-          - { label: "Nadpis", name: "title", widget: "string", default: "Náplň tréninku" }
+          - {
+              label: "Nadpis",
+              name: "title",
+              widget: "string",
+              default: "Náplň tréninku",
+            }
           - { label: "Text", name: "text", widget: "markdown" }
 
       - label: "Historie"
         name: "history"
         file: "src/content/history.md" # OPRAVENO
         fields:
-          - { label: "Nadpis", name: "title", widget: "string", default: "Něco málo z historie" }
+          - {
+              label: "Nadpis",
+              name: "title",
+              widget: "string",
+              default: "Něco málo z historie",
+            }
           - { label: "Text", name: "text", widget: "markdown" }
           - label: "Fotky z historie"
             name: "historical_photos"
@@ -94,16 +146,36 @@ collections:
         name: "contact"
         file: "src/content/contact.md" # OPRAVENO
         fields:
-          - { label: "Název spolku", name: "club_name", widget: "string", default: "Lezci.com, z.s." }
-          - { label: "Adresa", name: "address", widget: "string", default: "Na čekané 266/9, Liberec 15, 460 15" }
-          - { label: "Telefon", name: "phone", widget: "string", default: "+420 737 383 808" }
+          - {
+              label: "Název spolku",
+              name: "club_name",
+              widget: "string",
+              default: "Lezci.com, z.s.",
+            }
+          - {
+              label: "Adresa",
+              name: "address",
+              widget: "string",
+              default: "Na čekané 266/9, Liberec 15, 460 15",
+            }
+          - {
+              label: "Telefon",
+              name: "phone",
+              widget: "string",
+              default: "+420 737 383 808",
+            }
           - label: "E-mailové adresy"
             name: "emails"
             widget: "list"
             fields:
               - { label: "E-mail", name: "email_address", widget: "string" }
           - { label: "IČO", name: "ico", widget: "string", default: "05627231" }
-          - { label: "Ředitel spolku", name: "director", widget: "string", default: "Jaroslav Kupr" }
+          - {
+              label: "Ředitel spolku",
+              name: "director",
+              widget: "string",
+              default: "Jaroslav Kupr",
+            }
 
   # DYNAMICKÉ KOLEKCE (FOLDER) - VŠECHNY OPRAVENY NA src/content/...
   - name: "aktuality"
@@ -115,22 +187,37 @@ collections:
       - { label: "Autor", name: "author", widget: "string", default: "Jarda" }
       - { label: "Titulek", name: "title", widget: "string" }
       - { label: "Datum", name: "date", widget: "datetime" }
-      - { label: "Obrázek", name: "thumbnail", widget: "image", required: false }
+      - { label: "Místo", name: "position", widget: string }
+      - {
+          label: "Obrázek",
+          name: "thumbnail",
+          widget: "image",
+          required: false,
+        }
       - { label: "Text aktuality", name: "body", widget: "markdown" }
       - name: "URL"
         label: "Odkazy"
         widget: "list"
         required: false
         fields:
-          - { label: "Název odkazu", name: "url_name", widget: "string", required: false }
-          - { label: "Obrázek odkazu", name: "url_image", widget: "image", required: false }
+          - {
+              label: "Název odkazu",
+              name: "url_name",
+              widget: "string",
+              required: false,
+            }
+          - {
+              label: "Obrázek odkazu",
+              name: "url_image",
+              widget: "image",
+              required: false,
+            }
           - { label: "Odkaz", name: "url", widget: "string" }
       - label: "youtube video"
         name: "youtube_video"
         widget: "string"
         required: false
         hint: "Zadejte pouze ID videa z YouTube (např. pro https://youtu.be/bVJVHvGWjuw zadejte bVJVHvGWjuw)"
-      
 
   - name: "upcoming_events_posts"
     label: "Kalendář akcí (jednotlivé)"
@@ -140,7 +227,12 @@ collections:
     fields:
       - { label: "Název akce", name: "title", widget: "string" }
       - { label: "Datum a čas", name: "datetime", widget: "datetime" }
-      - { label: "Místo konání", name: "location", widget: "string", required: false }
+      - {
+          label: "Místo konání",
+          name: "location",
+          widget: "string",
+          required: false,
+        }
       - { label: "Popis akce", name: "description", widget: "markdown" }
 
   - name: "useful_videos"
@@ -174,7 +266,12 @@ collections:
       - { label: "Fotka", name: "photo", widget: "image", required: false }
       - { label: "Telefon", name: "tel", widget: "string", required: false }
       - { label: "E-mail", name: "email", widget: "string", required: false }
-      - { label: "Číslo skupiny", name: "group-num", widget: "number", required: false }
+      - {
+          label: "Číslo skupiny",
+          name: "group-num",
+          widget: "number",
+          required: false,
+        }
 
   - name: "galerie"
     label: "Galerie"
@@ -184,8 +281,13 @@ collections:
     fields:
       - { label: "Název akce", name: "title", widget: "string" }
       - { label: "Náhledová fotka", name: "photo", widget: "image" }
-      - { label: "odkaz na galerii", name: "gallery_url", widget: "string"}
-      - { label: "Fotograf", name: "photographer", widget: "string", required: false }
+      - { label: "odkaz na galerii", name: "gallery_url", widget: "string" }
+      - {
+          label: "Fotograf",
+          name: "photographer",
+          widget: "string",
+          required: false,
+        }
 
   - name: "sponsors"
     label: "Sponzoři"
@@ -195,4 +297,9 @@ collections:
     fields:
       - { label: "Název sponzora", name: "sponsor_name", widget: "text" }
       - { label: "Logo sponzora", name: "sponsor_logo", widget: "image" }
-      - { label: "Webová stránka sponzora", name: "sponsor_website", widget: "string", required: false }
+      - {
+          label: "Webová stránka sponzora",
+          name: "sponsor_website",
+          widget: "string",
+          required: false,
+        }
