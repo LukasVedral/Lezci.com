@@ -219,7 +219,7 @@ collections:
         required: false
         hint: "Zadejte pouze ID videa z YouTube (např. pro https://youtu.be/bVJVHvGWjuw zadejte bVJVHvGWjuw)"
 
-  - name: "upcoming_events_posts"
+  - name: "upcoming_events"
     label: "Kalendář akcí (jednotlivé)"
     folder: "src/content/upcoming_events"
     create: true

@@ -193,9 +193,9 @@
         </div>
         <a class="btn btn--light" href="./pages/news.html">Všechny aktuality</a>
       </section>
-
+{{ collections.upcoming_events | dump }}
       <!--sekce upcoming-events bude existovat pouze kdyz bude mit kontent-->
-      {% if collections.upcoming_events.length > 0 %}
+      {% if collections.upcoming_events and collections.upcoming_events.length > 0 %}
 
 
         <section class="upcoming-events">
