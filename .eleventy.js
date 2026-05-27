@@ -32,6 +32,18 @@ module.exports = function(eleventyConfig) {
     return url;
   });
 
+  const md = require("markdown-it")();
+  eleventyConfig.addFilter("markdown", (content) => 
+    md.render(content ?? "")
+);
+
+eleventyConfig.addFilter("date", (date) => {
+  return new Date(date).toLocaleDateString("cs-CZ", {
+    day: "2-digit",
+    month: "2-digit", 
+    year: "numeric"
+  });
+});
   // Sitemap plugin
   eleventyConfig.addPlugin(sitemap, {
     sitemap: {
