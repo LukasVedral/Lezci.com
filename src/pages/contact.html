@@ -43,15 +43,20 @@
 
     <main>
       <h1 class="divider divider--side">Kontakt</h1>
-      <section>
+      <section class="contact-info">
         <div class="contact-info__container">
           <h2>Název spolku</h2>
           <p>Lezci.com, z.s.</p>
         </div>
-        <div class="contact-info__container">
+        <a
+          class="contact-info__container"
+          href="https://maps.app.goo.gl/UQCKDdeGpqyAL4FD8"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <h2>Adresa sídla</h2>
           <p>Na čekané 266/9, Liberec 15, 460 15</p>
-        </div>
+        </a>
         <div class="contact-info__container">
           <h2>IČO</h2>
           <p>05627231</p>
@@ -63,16 +68,71 @@
         <div class="contact-info__container">
           <h2>Email</h2>
           <ul>
-            <li>suprcupr@seznam.cz</li>
-            <li>jaroslav.kupr@lezci.com</li>
+            <li>
+              <a href="mailto:suprcupr@seznam.cz">suprcupr@seznam.cz</a>
+            </li>
+            <li>
+              <a href="mailto:jaroslav.kupr@lezci.com"
+                >jaroslav.kupr@lezci.com</a
+              >
+            </li>
           </ul>
         </div>
-        <div class="contact-info__container">
+        <a class="contact-info__container" href="tel:+420737383808">
           <h2>Telefon</h2>
           <p>+420 737 383 808</p>
-        </div>
+        </a>
+        <a href="../index.html">
+          <img
+            src="/static/img/logo.png"
+            alt="Lezci.com background image"
+            class="contact__bg"
+          />
+        </a>
+      </section>
+      <section class="contact-socials">
+        <a
+          href="https://www.facebook.com/lezci.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-socials__item"
+        >
+          <img
+            src="../static/images/svg/icon--facebook.svg"
+            alt="Facebook"
+            class="contact-socials__icon"
+          />
+          <p>Lezci.com</p>
+        </a>
+        <a
+          href="https://www.instagram.com/lezci_com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-socials__item"
+        >
+          <img
+            src="../static/images/svg/icon--instagram.svg"
+            alt="Instagram"
+            class="contact-socials__icon"
+          />
+          <p>Lezci_com</p>
+        </a>
+        <a
+          href="https://www.youtube.com/@hovetrnik8763"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-socials__item"
+        >
+          <img
+            src="../static/images/svg/icon--youtube.svg"
+            alt="YouTube"
+            class="contact-socials__icon"
+          />
+          <p>Lezci com</p>
+        </a>
       </section>
     </main>
+
     <footer>
       <section class="footer__sponsors">
         <h4 class="footer__sponsors-title">Podporují nás:</h4>
