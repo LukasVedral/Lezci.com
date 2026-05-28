@@ -1,21 +1,18 @@
 const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 
-module.exports = function(eleventyConfig) {
-// Statické soubory
+module.exports = function (eleventyConfig) {
+  // Statické soubory
   eleventyConfig.addPassthroughCopy({ "src/static": "static" });
-  
+
   // TENTO ŘÁDEK CHYBÍ - kopíruje config pro CMS do složky admin
-  eleventyConfig.addPassthroughCopy({ "src/admin/config.yml": "admin/config.yml" });
-  
+  eleventyConfig.addPassthroughCopy({
+    "src/admin/config.yml": "admin/config.yml",
+  });
+
   // Pokud máš v src/admin i nějaký admin.js, přidej i ten:
   eleventyConfig.addPassthroughCopy({ "src/admin/admin.js": "admin/admin.js" });
 
-  // Kolekce
-  eleventyConfig.addCollection("years", collectionApi => {
-    return collectionApi
-      .getFilteredByGlob("src/years/*.md")
-      .sort((a, b) => b.data.year - a.data.year);
-  });
+  eleventyConfig.addGlobalData("now", () => new Date());
 
   // Filtr na URL
   eleventyConfig.addFilter("url", (value) => {
@@ -33,29 +30,52 @@ module.exports = function(eleventyConfig) {
   });
 
   const md = require("markdown-it")();
-  eleventyConfig.addFilter("markdown", (content) => 
-    md.render(content ?? "")
-);
+  eleventyConfig.addFilter("markdown", (content) => md.render(content ?? ""));
 
-eleventyConfig.addFilter("date", (date) => {
-  return new Date(date).toLocaleDateString("cs-CZ", {
-    day: "2-digit",
-    month: "2-digit", 
-    year: "numeric"
+  eleventyConfig.addFilter("date", (date) => {
+    return new Date(date).toLocaleDateString("cs-CZ", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
   });
-});
+  eleventyConfig.addFilter("year", (date) => {
+    return new Date(date).toLocaleDateString("cs-CZ", { year: "numeric" });
+  });
+
+  eleventyConfig.addFilter("month", (date) => {
+    return new Date(date).toLocaleDateString("cs-CZ", { month: "long" });
+  });
+
+  eleventyConfig.addFilter("day", (date) => {
+    return new Date(date).toLocaleDateString("cs-CZ", { day: "2-digit" });
+  });
+
+  eleventyConfig.addFilter("youtubeId", (url) => {
+    const match = url.match(/(?:v=|youtu\.be\/)([^&?/]+)/);
+    return match ? match[1] : url;
+  });
+
+  eleventyConfig.addCollection("upcoming_events", function (collectionApi) {
+    const now = new Date();
+    return collectionApi
+      .getFilteredByTag("upcoming_events")
+      .filter((item) => new Date(item.data.datetime) >= now)
+      .sort((a, b) => new Date(a.data.datetime) - new Date(b.data.datetime));
+  });
+
   // Sitemap plugin
   eleventyConfig.addPlugin(sitemap, {
     sitemap: {
-      hostname: "https://harcovskybloudil.cz"
-    }
+      hostname: "https://harcovskybloudil.cz",
+    },
   });
 
   return {
     dir: {
       input: "src",
-      output: "_site"
+      output: "_site",
     },
-    htmlTemplateEngine: "njk"
+    htmlTemplateEngine: "njk",
   };
 };

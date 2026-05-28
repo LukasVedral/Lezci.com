@@ -27,41 +27,35 @@
       </div>
       <nav class="hamburger-nav hamburger-zone">
         <ul>
-          <li><a lass="menu__item" href="./index.html">Domů</a></li>
-          <li><a class="menu__item" href="./pages/news.html">Aktuality</a></li>
-          <li><a class="menu__item" href="./pages/club.html">Oddíl</a></li>
+          <li><a class="menu__item" href="/index.html">Domů</a></li>
+          <li><a class="menu__item" href="/pages/news">Aktuality</a></li>
+          <li><a class="menu__item" href="/pages/club">Oddíl</a></li>
           <li>
-            <a class="menu__item" href="./pages/our-team.html">Náš tým</a>
+            <a class="menu__item" href="/pages/our-team">Náš tým</a>
           </li>
           <li>
-            <a class="menu__item" href="./pages/public.html">Pro veřejnost</a>
+            <a class="menu__item" href="/pages/public">Pro veřejnost</a>
           </li>
-          <li><a class="menu__item" href="./pages/gallery.html">Galerie</a></li>
-          <li><a class="menu__item" href="./pages/contact.html">Kontakt</a></li>
+          <li><a class="menu__item" href="/pages/gallery">Galerie</a></li>
+          <li><a class="menu__item" href="/pages/contact">Kontakt</a></li>
         </ul>
       </nav>
 
-      {% set hero = null %}
-        {% for item in collections.all %}
-          {% if item.fileSlug == "hero" %}
-            {% set hero = item %}
-          {% endif %}
-        {% endfor %}
-
+      {% set hero = null %} {% for item in collections.all %} {% if
+      item.fileSlug == "hero" %} {% set hero = item %} {% endif %} {% endfor %}
       {% for item in hero.data.hero_images %}
-        <img 
-        class="hero__bg hero__bg--slide" 
-        src="{{ item.image }}" 
-        alt="Obrázek Lezce" 
-        style="display: none;" 
-        />
+      <img
+        class="hero__bg hero__bg--slide"
+        src="{{ item.image }}"
+        alt="Obrázek Lezce"
+        style="display: none"
+      />
       {% endfor %}
       <script>
         const slides = document.querySelectorAll(".hero__bg--slide");
         const random = Math.floor(Math.random() * slides.length);
         slides[random].style.display = "block";
       </script>
-
 
       <svg
         class="hero__shape"
@@ -82,23 +76,15 @@
     </header>
 
     <main>
-
-
-
       <section class="about-us">
-
-        {% for item in collections.all %}
-          {% if item.fileSlug == "about" %}
-            <img src="{{ item.data['about-image'] }}" alt="Obrázek O Nás" />
-            <h2>O Nás</h2>
-            <div class="about-us--content">
-              <p>
-                {{ item.data['about-text'] | markdown | safe }}
-              </p>
-              <a class="btn btn--dark" href="./pages/club.html">Více o oddílu</a>
-            </div>
-          {% endif %}
-        {% endfor %}
+        {% for item in collections.all %} {% if item.fileSlug == "about" %}
+        <img src="{{ item.data['about-image'] }}" alt="Obrázek O Nás" />
+        <h2>O Nás</h2>
+        <div class="about-us--content">
+          <p>{{ item.data['about-text'] | markdown | safe }}</p>
+          <a class="btn btn--dark" href="./pages/club.html">Více o oddílu</a>
+        </div>
+        {% endif %} {% endfor %}
       </section>
 
       <section class="main__why-us">
@@ -135,103 +121,97 @@
             </div>
           </div>
           <div class="groups">
+            {% for item in collections.all %} {% if item.fileSlug ==
+            "training_groups" %}
 
-            {% for item in collections.all %}
-              {% if item.fileSlug == "training_groups" %}
+            <h2>Tréninkové skupiny</h2>
+            <p class="subtitle">V roce {{ item.data.years }}</p>
 
-                <h2>Tréninkové skupiny</h2>
-                <p class="subtitle">V roce {{ item.data.years }}</p>
+            <div class="timeline">
+              <div class="line"></div>
 
-                <div class="timeline">
-                  <div class="line"></div>
-
-                    {% for day in item.data.days %}
-                    <div class="row">
-                      <span class="day">{{ day.day }}</span>
-                      <div class="dot"></div>
-                      <div class="box">
-
-                        {% for group in day.groups %}
-                          <strong>{{ group.group_name }}</strong>
-                          <span>{{ group.time }}</span>
-                        {% endfor %}
-
-                      </div>
-                    </div>
-                    {% endfor %}
-
+              {% for day in item.data.days %}
+              <div class="row">
+                <span class="day">{{ day.day }}</span>
+                <div class="dot"></div>
+                <div class="box">
+                  {% for group in day.groups %}
+                  <strong>{{ group.group_name }}</strong>
+                  <span>{{ group.time }}</span>
+                  {% endfor %}
                 </div>
+              </div>
+              {% endfor %}
+            </div>
 
-              {% endif %}
-            {% endfor %}
+            {% endif %} {% endfor %}
           </div>
         </div>
       </section>
       <section>
-
-
-
         <h2 class="divider">Aktuality</h2>
         <div class="news__cards">
-          {% for item in collections.aktuality | reverse %}
-            {% if loop.index <= 4 %}
-              <div class="article__card">
-                <img src="{{ item.data.thumbnail }}" alt="{{ item.data.title }}" class="card--img" />
-                <div class="card-overlay"></div>
+          {% for item in collections.aktuality | reverse %} {% if loop.index <=
+          4 %}
+          <div class="article__card">
+            <img
+              src="{{ item.data.thumbnail }}"
+              alt="{{ item.data.title }}"
+              class="card--img"
+            />
+            <div class="card-overlay"></div>
 
-                <div class="card-meta">
-                  <span><i class="ti ti-calendar"></i>{{ item.data.date | date }}</span>
-                  <span><i class="ti ti-author"></i>{{ item.data.author }}</span>
-                </div>
+            <div class="card-meta">
+              <span
+                ><i class="ti ti-calendar"></i>{{ item.data.date | date }}</span
+              >
+              <span><i class="ti ti-author"></i>{{ item.data.author }}</span>
+            </div>
 
-                <h3 class="card__title">{{ item.data.title }}</h3>
+            <h3 class="card__title">{{ item.data.title }}</h3>
 
-                <a href="#" class="card-read">číst více</a>
-              </div>
-            {% endif %}
-          {% endfor %}
+            <a href="#" class="card-read">číst více</a>
+          </div>
+          {% endif %} {% endfor %}
         </div>
         <a class="btn btn--light" href="./pages/news.html">Všechny aktuality</a>
       </section>
-{{ collections.upcoming_events | dump }}
       <!--sekce upcoming-events bude existovat pouze kdyz bude mit kontent-->
-      {% if collections.upcoming_events and collections.upcoming_events.length > 0 %}
+      {% if collections.upcoming_events and collections.upcoming_events.length >
+      0 %}
 
+      <section class="upcoming-events">
+        <img
+          class="divider divider--mountain-svg"
+          src="./static/images/svg/mountain.svg"
+          alt="kresba hory"
+        />
+        <h2 class="divider">Nadcházející akce</h2>
+        {% for event in collections.upcoming_events %} {% if loop.index <= 2 %}
+        <div class="event-card">
+          <div class="card-top">
+            <span>
+              <i class="ti ti-calendar"></i>
+              {{ event.data.datetime | year }}
+            </span>
 
-        <section class="upcoming-events">
-          <img
-            class="divider divider--mountain-svg"
-            src="./static/images/svg/mountain.svg"
-            alt="kresba hory"
-          />
-          <h2 class="divider">Nadcházející akce</h2>
-          {% for event in collections.upcoming_events %}
-            <div class="event-card">
-              <div class="card-top">
-                <span><i class="ti ti-calendar"></i> 2025</span>
-                <span><i class="ti ti-map-pin"></i> HIS Nové Město nad Metují</span>
-              </div>
-              <div class="card-body">
-                <div class="card-date">
-                  <span class="month">ČER</span>
-                  <span class="day">4</span>
-                </div>
-
-                <div class="card-content">
-                  <h3>Dětský HIS maraton</h3>
-                  <p>
-                    O víkendu proběhne dětský HIS maraton v Novém Městě nad Metují.
-                    Lokace krásná, cesty parádní a našim se bude dařit.
-                  </p>
-                </div>
-              </div>
+            <span><i class="ti ti-map-pin"></i>{{ event.data.location }}</span>
+          </div>
+          <div class="card-body">
+            <div class="card-date">
+              <span class="month">{{ event.data.datetime | month }}</span>
+              <span class="day">{{ event.data.datetime | day }}</span>
             </div>
-          {% endfor %}
 
-        </section>
+            <div class="card-content">
+              <h3>{{ event.data.title }}</h3>
+              <p>{{ event.data.description }}</p>
+            </div>
+          </div>
+        </div>
+        {% endif %} {% endfor %}
+      </section>
       {% endif %}
-
-
     </main>
 
     <footer>
@@ -349,6 +329,8 @@
           </div>
         </section>
         <section class="footer__info--item">
+          {% for item in collections.all %} {% if item.fileSlug == "contact" and
+          item.url == "/content/contact.md"%}
           <h4>Kontakt</h4>
           <div class="info__contact">
             <svg
@@ -365,10 +347,11 @@
                 fill="#FF6600"
               />
             </svg>
-            <span>PhDr. Jaroslav Kupr, Ph.D.</span>
+
+            <span>{{ item.data.director }}</span>
           </div>
           <div class="info__contact">
-            <a href="tel:+420737383808">
+            <a href="tel:{{ item.data.phone | replace(' ', '') }}">
               <svg
                 width="32"
                 height="32"
@@ -389,7 +372,7 @@
                   fill="#FF6600"
                 />
               </svg>
-              <span>+420 737 383 808</span>
+              <span>{{ item.data.phone }}</span>
             </a>
           </div>
           <div class="info__contact">
@@ -408,12 +391,14 @@
               />
             </svg>
             <div class="info__emails">
-              <a href="mailto:suprcupr@seznam.cz">suprcupr@seznam.cz</a>
-              <a href="mailto:jaroslav.kupr@lezci.com"
-                >jaroslav.kupr@lezci.com</a
+              {% for email in item.data.emails %}
+              <a href="mailto:{{ email.email_address }}"
+                >{{ email.email_address }}</a
               >
+              {% endfor %}
             </div>
           </div>
+          {% endif %} {% endfor %}
         </section>
       </section>
       <section class="footer__copy">
@@ -435,7 +420,5 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/react@19/umd/react.production.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/react-dom@19/umd/react-dom.production.min.js"></script>
-
-
   </body>
 </html>
