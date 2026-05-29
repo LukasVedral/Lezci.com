@@ -100,52 +100,15 @@
       <section class="offered-events">
         <h2>Nabízené akce</h2>
         <div class="offers">
+          {% for item in collections.all %}{%if item.fileSlug ==
+          "offered_events" %}
           <div class="offers__container">
             <div class="offers__content">
               <p>Nabídka pro školy a organizace:</p>
-              <h3>Lezení a lanové aktivity</h3>
+
+              <h3>{{item.data.title}}</h3>
               <div class="offers__text">
-                <p>
-                  Chcete ozvláštnit školní výlet, uspořádat netradiční
-                  teambuilding nebo dopřát dětem nezapomenutelný sportovní
-                  zážitek? Nabízíme komplexní programy na míru zaměřené na
-                  sportovní lezení a nízké lanové překážky. Akce zajišťujeme „na
-                  klíč“ – od stavby drah až po odborný dohled našich
-                  instruktorů.
-                </p>
-                <p>
-                  Máte zájem o spolupráci? Napište nám a společně vymyslíme
-                  program, který Vás bude bavit!
-                </p>
-                <div class="offers__benefit">
-                  <img
-                    src="../static/images/svg/icon--heart.svg"
-                    alt="ikona srdce"
-                  />
-                  <p>Důvěřují nám školy a organizace napříč regionem:</p>
-                  <ul>
-                    <li>
-                      Liberec: ZŠ Ruprechtice, ZŠ Sokolovská, ZŠ Ještědská, ZŠ
-                      Dobiášova, ZŠ Oblačná, DDM Větrník.
-                    </li>
-                    <li>
-                      Poděbrady a okolí: DDM Symfonie, Hotelová škola Poděbrady,
-                      ZŠ RAF Nymburk.
-                    </li>
-                  </ul>
-                </div>
-                <div class="offers__benefit">
-                  <img
-                    src="../static/images/svg/icon--money-bag.svg"
-                    alt="ikona pytle s penězy"
-                  />
-                  <p>Výsledná cena se kalkuluje individuálně.</p>
-                  <p>
-                    Každý program je jedinečný a vytvořený na základě vašich
-                    požadavků, počtu účastníků a lokalitě. Nelze cenu určit
-                    předem.
-                  </p>
-                </div>
+                {{item.data.text | markdown | safe}}
               </div>
             </div>
             <div class="offers__cards">
@@ -258,6 +221,7 @@
           </div>
           <!--kontaktujte nás href-->
           <a href="">Kontaktujte nás</a>
+          {% endif %}{% endfor %}
         </div>
       </section>
     </main>
