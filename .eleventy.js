@@ -29,8 +29,20 @@ module.exports = function (eleventyConfig) {
     return url;
   });
 
-  const md = require("markdown-it")();
-  eleventyConfig.addFilter("markdown", (content) => md.render(content ?? ""));
+  eleventyConfig.addFilter("markdown", (content) => {
+    if (!content) return "";
+    const md = require("markdown-it")({ html: true });
+    const rendered = md.render(content);
+    return rendered
+      .replace(
+        /::icon-heart::/g,
+        `<img src="/static/images/svg/icon--heart.svg" alt="srdce">`,
+      )
+      .replace(
+        /::icon-money::/g,
+        `<img src="/static/images/svg/icon--money-bag.svg" alt="pytel s penězi">`,
+      );
+  });
 
   eleventyConfig.addFilter("date", (date) => {
     return new Date(date).toLocaleDateString("cs-CZ", {

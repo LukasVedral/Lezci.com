@@ -1,0 +1,73 @@
+a {
+  text-decoration: none;
+  color: var(--color-dark);
+}
+a,
+p,
+li,
+span,
+.countdown__item,
+.info__item h3,
+td,
+pre {
+  font-family: "Open-Sans", sans-serif;
+  margin: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+.info__title,
+.date__time,
+.podium__place,
+.category__text > strong,
+th,
+button,
+figcaption {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+}
+h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+h2,
+.header--index p {
+  font-weight: 600;
+  font-size: 1.75rem;
+}
+h3,
+li a {
+  color: #000;
+}
+header a,
+li a,
+.btn {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+li {
+  list-style: none;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+h4 {
+  font-size: 20px;
+  font-weight: 600;
+}
+h5 {
+  font-size: 20px;
+  font-weight: 600;
+}
+.primary {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+.info__contact span,
+.info__contact a {
+  font-weight: 300;
+  font-size: 20px;
+}

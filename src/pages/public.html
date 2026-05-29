@@ -112,75 +112,32 @@
               </div>
             </div>
             <div class="offers__cards">
+              {% for event in item.data.events_list %}
               <div class="service-card">
                 <div class="card-overlay"></div>
 
+                {% if loop.index == 1 %}
                 <img
-                  src="../static/images/svg/climbing-icon.svg"
+                  src="/static/images/svg/climbing-icon.svg"
                   alt="ikona lezení"
                   class="card-icon"
                 />
 
-                <div class="card-header">
-                  <h2>Výuka lezení</h2>
-                  <p class="card-sub">umělá stěna, skála</p>
-                </div>
-
-                <p class="card-desc">
-                  Lezení rozvíjí <strong>sílu, koordinaci</strong> i
-                  <strong>vzájemnou důvěru</strong>. Rádi vás zasvětíme do jeho
-                  tajů.
-                </p>
-
-                <!-- collapsed -->
-                <button class="btn-more" onclick="toggleCard(this)">
-                  Chci vědět více!
-                </button>
-
-                <!-- expanded -->
-                <div class="card-details hidden">
-                  <button class="btn-less" onclick="toggleCard(this)">
-                    méně
-                  </button>
-
-                  <div class="detail-item">
-                    <h3>Umělé stěny</h3>
-                    <p>
-                      Ideální pro školní třídy a skupiny v rámci tělesné výchovy
-                      nebo výletů.
-                    </p>
-                  </div>
-                  <div class="detail-item">
-                    <h3>Skalní lezení</h3>
-                    <p>
-                      Zážitkový program v přírodě (lokalita a termín dle
-                      individuální domluvy).
-                    </p>
-                  </div>
-                  <div class="detail-item">
-                    <h3>Profesionální vedení</h3>
-                    <p>
-                      Výuka probíhá pod dohledem instruktorů s licencí MŠMT.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="service-card">
-                <div class="card-overlay"></div>
-
+                {% endif %} {% if loop.index == 2 %}
                 <img
-                  src="../static/images/svg/slackline-icon.svg"
+                  src="/static/images/svg/slackline-icon.svg"
                   alt="ikona slackline"
                   class="card-icon"
                 />
+                {% endif %}
 
                 <div class="card-header">
-                  <h2>Nízké lanové překážky</h2>
+                  <h2>{{event.event_name}}</h2>
+                  <p class="card-sub">{{event.locations}}</p>
                 </div>
 
                 <p class="card-desc">
-                  Skvělý nástroj pro rozvoj spolupráce a překonávání vlastních
-                  hranic v bezpečné výšce nad zemí.
+                  {{event.event_description | markdown | safe}}
                 </p>
 
                 <!-- collapsed -->
@@ -193,30 +150,15 @@
                   <button class="btn-less" onclick="toggleCard(this)">
                     méně
                   </button>
-
+                  {% for option in event.options %}
                   <div class="detail-item">
-                    <h3>Mobilita</h3>
-                    <p>
-                      Překážky z certifikovaných PP-lan postavíme téměř kdekoli
-                      (např. v areálu školy nebo v parku).
-                    </p>
+                    <h3>{{ option.option_name }}</h3>
+                    <p>{{ option.option_description | markdown | safe }}</p>
                   </div>
-                  <div class="detail-item">
-                    <h3>Program na míru</h3>
-                    <p>
-                      Od krátkých workshopů až po celodenní teambuildingové
-                      bloky.
-                    </p>
-                  </div>
-                  <div class="detail-item">
-                    <h3>Bezpečnost</h3>
-                    <p>
-                      Používáme výhradně certifikovaný materiál a prověřené
-                      metodiky.
-                    </p>
-                  </div>
+                  {% endfor %}
                 </div>
               </div>
+              {% endfor %}
             </div>
           </div>
           <!--kontaktujte nás href-->
@@ -227,6 +169,7 @@
     </main>
 
     <footer>
+      <div class="footer__overlay"></div>
       <section class="footer__sponsors">
         <h4 class="footer__sponsors-title">Podporují nás:</h4>
         <div class="footer__sponsors-logos">
@@ -449,6 +392,16 @@
           el: ".swiper-pagination",
         },
       });
+    </script>
+
+    <script>
+      function toggleCard(button) {
+        const card = button.closest(".service-card");
+        const details = card.querySelector(".card-details");
+        details.classList.toggle("hidden");
+        const showMoreButton = card.querySelector(".btn-more");
+        showMoreButton.classList.toggle("hidden");
+      }
     </script>
   </body>
 </html>
