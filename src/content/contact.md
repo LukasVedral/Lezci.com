@@ -6,5 +6,5 @@ emails:
   - email_address: suprcupr@seznam.cz
   - email_address: jaroslav.kupr@lezci.com
 ico: "05627231"
-director: Jaroslav Kupr
+director: PhDr. Jaroslav Kupr, Ph.D.
 ---
