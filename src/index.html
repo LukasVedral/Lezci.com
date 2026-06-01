@@ -8,87 +8,131 @@
     <link rel="stylesheet" href="/static/css/style.css" />
   </head>
   <body>
-    <header class="hamburger-zone header--index">
-      <h1 style="position: absolute; left: -1000px">Lezci.com</h1>
+    <div class="header header--index">
+      <header class="hamburger-zone">
+        <h1 style="position: absolute; left: -1000px">Lezci.com</h1>
+        <!-- TOP BAR -->
+        <div class="hamburger-row hamburger-zone">
+          <a class="logo" href="/index.html">
+            <img src="/static/images/logo-dark.svg" alt="Lezci.com logo" />
+          </a>
 
-      <div class="hamburger-row hamburger-zone">
-        <a class="logo" href="/index.html">
-          <img src="/static/images/logo.png" alt="Lezci.com logo" />
-        </a>
+          <button
+            class="hamburger-btn hamburger-zone"
+            aria-label="Otevřít menu"
+            aria-expanded="false"
+            aria-controls="hamburger-nav"
+          >
+            <span class="bar bar-1"></span>
+            <span class="bar bar-2"></span>
+            <span class="bar bar-3"></span>
+          </button>
+        </div>
 
-        <a
-          href="javascript:void(0)"
-          class="hamburger hamburger-btn hamburger-zone"
+        <!-- FULLSCREEN DRAWER -->
+        <nav
+          class="hamburger-nav hamburger-zone"
+          id="hamburger-nav"
+          aria-hidden="true"
         >
-          <div class="spans"><span></span><span></span></div>
-          <div class="spans"><span></span><span></span></div>
-          <div class="spans"><span></span><span></span></div>
-        </a>
-      </div>
-      <nav class="hamburger-nav hamburger-zone">
-        <ul>
-          <li><a class="menu__item" href="/index.html">Domů</a></li>
-          <li><a class="menu__item" href="/pages/news">Aktuality</a></li>
-          <li><a class="menu__item" href="/pages/club">Oddíl</a></li>
-          <li>
-            <a class="menu__item" href="/pages/our-team">Náš tým</a>
-          </li>
-          <li>
-            <a class="menu__item" href="/pages/public">Pro veřejnost</a>
-          </li>
-          <li><a class="menu__item" href="/pages/gallery">Galerie</a></li>
-          <li><a class="menu__item" href="/pages/contact">Kontakt</a></li>
-        </ul>
-      </nav>
+          <!-- NAV + STICKMAN LAYOUT -->
+          <div class="nav-inner">
+            <ul>
+              <li>
+                <a class="menu__item" href="/index.html">
+                  DOMŮ<span class="menu__arrow">→</span>
+                </a>
+              </li>
+              <li>
+                <a class="menu__item" href="/pages/news">
+                  AKTUALITY<span class="menu__arrow">→</span>
+                </a>
+              </li>
+              <li>
+                <a class="menu__item" href="/pages/club">
+                  ODDÍL<span class="menu__arrow">→</span>
+                </a>
+              </li>
+              <li>
+                <a class="menu__item" href="/pages/our-team">
+                  NÁŠ TÝM<span class="menu__arrow">→</span>
+                </a>
+              </li>
+              <li>
+                <a class="menu__item" href="/pages/public">
+                  PRO VEŘEJNOST<span class="menu__arrow">→</span>
+                </a>
+              </li>
+              <li>
+                <a class="menu__item" href="/pages/gallery">
+                  GALERIE<span class="menu__arrow">→</span>
+                </a>
+              </li>
+              <li>
+                <a class="menu__item" href="/pages/contact">
+                  KONTAKT<span class="menu__arrow">→</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
 
-      {% set hero = null %} {% for item in collections.all %} {% if
-      item.fileSlug == "hero" %} {% set hero = item %} {% endif %} {% endfor %}
-      {% for item in hero.data.hero_images %}
-      <img
-        class="image--responsive hero__bg hero__bg--slide"
-        src="{{ item.image }}"
-        alt="Obrázek Lezce"
-        style="display: none"
-      />
-      {% endfor %}
-      <script>
-        const slides = document.querySelectorAll(".hero__bg--slide");
-        const random = Math.floor(Math.random() * slides.length);
-        slides[random].style.display = "block";
-      </script>
+        <div class="hero__wrapper">
+          {% set hero = null %} {% for item in collections.all %} {% if
+          item.fileSlug == "hero" %} {% set hero = item %} {% endif %} {% endfor
+          %} {% for item in hero.data.hero_images %}
+          <img
+            class="image--responsive hero__bg hero__bg--slide"
+            src="{{ item.image }}"
+            alt="Obrázek Lezce"
+            style="display: none"
+          />
+          {% endfor %}
 
-      <svg
-        class="hero__shape"
-        width="1385"
-        height="110"
-        viewBox="0 0 1385 110"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M0 0L692.5 110L1385 0V110H0V0Z" fill="#F5F5F5" />
-      </svg>
+          <script>
+            const slides = document.querySelectorAll(".hero__bg--slide");
+            if (slides.length > 0) {
+              const random = Math.floor(Math.random() * slides.length);
+              slides[random].style.display = "block";
+            }
+          </script>
 
-      <div class="hero__content">
-        <p class="hero__text--big">Tvůj cíl je nahoře,</p>
-        <p class="hero__text--small">my tě tam dostaneme.</p>
-        <a class="btn hero__btn" href="./pages/contact.html">Kontaktuj nás</a>
-      </div>
-    </header>
+          <div class="hero__overlay"></div>
 
+          <div class="hero__content">
+            <p class="hero__text--big">Tvůj cíl je nahoře,</p>
+            <p class="hero__text--small">mi ti pomůžeme ho dosáhnout.</p>
+            <a class="btn hero__btn" href="./pages/contact.html"
+              >Kontaktuj nás</a
+            >
+          </div>
+
+          <svg
+            class="hero__shape"
+            viewBox="0 0 1385 110"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M0 0L692.5 110L1385 0V110H0V0Z" fill="#F5F5F5" />
+          </svg>
+        </div>
+      </header>
+    </div>
     <main>
       <section class="about-us">
         {% for item in collections.all %} {% if item.fileSlug == "about" %}
-        <img
-          class="image--responsive"
-          src="{{ item.data['about-image'] }}"
-          alt="Obrázek O Nás"
-        />
+
         <h2>O Nás</h2>
         <div class="about-us--content">
+          <img
+            class="image--responsive"
+            src="{{ item.data['about-image'] }}"
+            alt="Obrázek O Nás"
+          />
           <p>{{ item.data['about-text'] | markdown | safe }}</p>
-          <a class="btn btn--dark" href="./pages/club.html">Více o oddílu</a>
         </div>
         {% endif %} {% endfor %}
+        <a class="btn btn--dark" href="./pages/club.html">Více o oddílu</a>
       </section>
 
       <section class="main__why-us">
@@ -98,7 +142,7 @@
             <div class="why-us__item">
               <div class="why-us--heading">
                 <span class="number-bg">01</span>
-                <h3 class="divider--after">Skvělá parta</h3>
+                <h3 class="divider divider--after">Skvělá parta</h3>
               </div>
               <p>
                 Nejsme jen klub, jsme komunita kamarádů, která tě vždy podrží.
@@ -107,7 +151,7 @@
             <div class="why-us__item">
               <div class="why-us--heading">
                 <span class="number-bg">02</span>
-                <h3 class="divider--after">Mladý kolektiv</h3>
+                <h3 class="divider divider--after">Mladý kolektiv</h3>
               </div>
               <p>
                 Letos máme pod svýmy křídly přes 48 spokojených mladých lezců.
@@ -116,7 +160,7 @@
             <div class="why-us__item">
               <div class="why-us--heading">
                 <span class="number-bg">03</span>
-                <h3 class="divider--after">Lezení bez tlaku</h3>
+                <h3 class="divider divider--after">Lezení bez tlaku</h3>
               </div>
               <p>
                 U nás nejde o medaile, ale o zážitky. Lezeme pro radost, ne pro
@@ -124,32 +168,32 @@
               </p>
             </div>
           </div>
-          <div class="groups">
-            {% for item in collections.all %} {% if item.fileSlug ==
-            "training_groups" %}
+        </div>
+        <div class="groups">
+          {% for item in collections.all %} {% if item.fileSlug ==
+          "training_groups" %}
 
-            <h2>Tréninkové skupiny</h2>
-            <p class="subtitle">V roce {{ item.data.years }}</p>
+          <h2>Tréninkové skupiny</h2>
+          <p class="subtitle">V roce {{ item.data.years }}</p>
 
-            <div class="timeline">
-              <div class="line"></div>
+          <div class="timeline">
+            <div class="line"></div>
 
-              {% for day in item.data.days %}
-              <div class="row">
-                <span class="day">{{ day.day }}</span>
-                <div class="dot"></div>
-                <div class="box">
-                  {% for group in day.groups %}
-                  <strong>{{ group.group_name }}</strong>
-                  <span>{{ group.time }}</span>
-                  {% endfor %}
-                </div>
+            {% for day in item.data.days %}
+            <div class="row">
+              <span class="day">{{ day.day }}</span>
+              <div class="dot"></div>
+              <div class="box">
+                {% for group in day.groups %}
+                <strong>{{ group.group_name }}</strong>
+                <span>{{ group.time }}</span>
+                {% endfor %}
               </div>
-              {% endfor %}
             </div>
-
-            {% endif %} {% endfor %}
+            {% endfor %}
           </div>
+
+          {% endif %} {% endfor %}
         </div>
       </section>
       <section>
@@ -422,5 +466,39 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/react@19/umd/react.production.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/react-dom@19/umd/react-dom.production.min.js"></script>
+
+    <script>
+      // Vybereme všechny položky, které chceme animovat
+      const animovanePolozky = document.querySelectorAll(".why-us__item");
+
+      // Konfigurace observeru
+      const options = {
+        root: null, // Hlídá vůči viewportu (obrazovce)
+        rootMargin: "0px", // Žádný okraj
+        threshold: 0.2, // Animace se spustí, až když je 20% prvku vidět
+      };
+
+      // Funkce, která se spustí, když prvek protne hranici viewportu
+      const callback = (entries, observer) => {
+        entries.forEach((entry) => {
+          // Pokud je prvek vidět na obrazovce (isIntersecting je true)
+          if (entry.isIntersecting) {
+            // Přidáme třídu, která spustí CSS animaci
+            entry.target.classList.add("is-visible");
+
+            // Přestat prvek hlídat (aby animace proběhla jen jednou)
+            observer.unobserve(entry.target);
+          }
+        });
+      };
+
+      // Vytvoření samotného observeru
+      const observer = new IntersectionObserver(callback, options);
+
+      // Spustit hlídání pro každou položku
+      animovanePolozky.forEach((polozka) => {
+        observer.observe(polozka);
+      });
+    </script>
   </body>
 </html>

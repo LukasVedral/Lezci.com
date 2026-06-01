@@ -10,33 +10,71 @@
   </head>
   <body>
     <div class="header">
-      <header class="hamburger-zone header--index">
+      <header class="hamburger-zone">
+        <!-- TOP BAR -->
         <div class="hamburger-row hamburger-zone">
           <a class="logo" href="/index.html">
-            <img src="/static/images/logo.png" alt="Lezci.com logo" />
+            <img src="/static/images/logo-dark.svg" alt="Lezci.com logo" />
           </a>
 
-          <a
-            href="javascript:void(0)"
-            class="hamburger hamburger-btn hamburger-zone"
+          <button
+            class="hamburger-btn hamburger-zone"
+            aria-label="Otevřít menu"
+            aria-expanded="false"
+            aria-controls="hamburger-nav"
           >
-            <div class="spans"><span></span><span></span></div>
-            <div class="spans"><span></span><span></span></div>
-            <div class="spans"><span></span><span></span></div>
-          </a>
+            <span class="bar bar-1"></span>
+            <span class="bar bar-2"></span>
+            <span class="bar bar-3"></span>
+          </button>
         </div>
-        <nav class="hamburger-nav hamburger-zone">
-          <ul>
-            <li><a lass="menu__item" href="/index.html">Domů</a></li>
-            <li><a class="menu__item" href="/pages/news">Aktuality</a></li>
-            <li><a class="menu__item" href="/pages/club">Oddíl</a></li>
-            <li><a class="menu__item" href="/pages/our-team">Náš tým</a></li>
-            <li>
-              <a class="menu__item" href="/pages/public">Pro veřejnost</a>
-            </li>
-            <li><a class="menu__item" href="/pages/gallery">Galerie</a></li>
-            <li><a class="menu__item" href="/pages/contact">Kontakt</a></li>
-          </ul>
+
+        <!-- FULLSCREEN DRAWER -->
+        <nav
+          class="hamburger-nav hamburger-zone"
+          id="hamburger-nav"
+          aria-hidden="true"
+        >
+          <!-- NAV + STICKMAN LAYOUT -->
+          <div class="nav-inner">
+            <ul>
+              <li>
+                <a class="menu__item" href="/index.html">
+                  DOMŮ<span class="menu__arrow">→</span>
+                </a>
+              </li>
+              <li>
+                <a class="menu__item" href="/pages/news">
+                  AKTUALITY<span class="menu__arrow">→</span>
+                </a>
+              </li>
+              <li>
+                <a class="menu__item" href="/pages/club">
+                  ODDÍL<span class="menu__arrow">→</span>
+                </a>
+              </li>
+              <li>
+                <a class="menu__item" href="/pages/our-team">
+                  NÁŠ TÝM<span class="menu__arrow">→</span>
+                </a>
+              </li>
+              <li>
+                <a class="menu__item" href="/pages/public">
+                  PRO VEŘEJNOST<span class="menu__arrow">→</span>
+                </a>
+              </li>
+              <li>
+                <a class="menu__item" href="/pages/gallery">
+                  GALERIE<span class="menu__arrow">→</span>
+                </a>
+              </li>
+              <li>
+                <a class="menu__item" href="/pages/contact">
+                  KONTAKT<span class="menu__arrow">→</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </nav>
       </header>
     </div>

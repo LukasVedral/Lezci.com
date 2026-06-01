@@ -6,37 +6,74 @@
     <title>Lezci.com - Oddíl</title>
     <meta name="description" content="Nejdůležitější věci ohledně závodu" />
     <link rel="stylesheet" href="/static/css/style.css" />
-    <link rel="preload" as="image" href="/static/img/index-bg.avif" />
   </head>
   <body>
     <div class="header">
-      <header class="hamburger-zone header--index">
+      <header class="hamburger-zone">
+        <!-- TOP BAR -->
         <div class="hamburger-row hamburger-zone">
           <a class="logo" href="/index.html">
-            <img src="/static/images/logo.png" alt="Lezci.com logo" />
+            <img src="/static/images/logo-dark.svg" alt="Lezci.com logo" />
           </a>
 
-          <a
-            href="javascript:void(0)"
-            class="hamburger hamburger-btn hamburger-zone"
+          <button
+            class="hamburger-btn hamburger-zone"
+            aria-label="Otevřít menu"
+            aria-expanded="false"
+            aria-controls="hamburger-nav"
           >
-            <div class="spans"><span></span><span></span></div>
-            <div class="spans"><span></span><span></span></div>
-            <div class="spans"><span></span><span></span></div>
-          </a>
+            <span class="bar bar-1"></span>
+            <span class="bar bar-2"></span>
+            <span class="bar bar-3"></span>
+          </button>
         </div>
-        <nav class="hamburger-nav hamburger-zone">
-          <ul>
-            <li><a lass="menu__item" href="/index.html">Domů</a></li>
-            <li><a class="menu__item" href="/pages/news">Aktuality</a></li>
-            <li><a class="menu__item" href="/pages/club">Oddíl</a></li>
-            <li><a class="menu__item" href="/pages/our-team">Náš tým</a></li>
-            <li>
-              <a class="menu__item" href="/pages/public">Pro veřejnost</a>
-            </li>
-            <li><a class="menu__item" href="/pages/gallery">Galerie</a></li>
-            <li><a class="menu__item" href="/pages/contact">Kontakt</a></li>
-          </ul>
+
+        <!-- FULLSCREEN DRAWER -->
+        <nav
+          class="hamburger-nav hamburger-zone"
+          id="hamburger-nav"
+          aria-hidden="true"
+        >
+          <!-- NAV + STICKMAN LAYOUT -->
+          <div class="nav-inner">
+            <ul>
+              <li>
+                <a class="menu__item" href="/index.html">
+                  DOMŮ<span class="menu__arrow">→</span>
+                </a>
+              </li>
+              <li>
+                <a class="menu__item" href="/pages/news">
+                  AKTUALITY<span class="menu__arrow">→</span>
+                </a>
+              </li>
+              <li>
+                <a class="menu__item" href="/pages/club">
+                  ODDÍL<span class="menu__arrow">→</span>
+                </a>
+              </li>
+              <li>
+                <a class="menu__item" href="/pages/our-team">
+                  NÁŠ TÝM<span class="menu__arrow">→</span>
+                </a>
+              </li>
+              <li>
+                <a class="menu__item" href="/pages/public">
+                  PRO VEŘEJNOST<span class="menu__arrow">→</span>
+                </a>
+              </li>
+              <li>
+                <a class="menu__item" href="/pages/gallery">
+                  GALERIE<span class="menu__arrow">→</span>
+                </a>
+              </li>
+              <li>
+                <a class="menu__item" href="/pages/contact">
+                  KONTAKT<span class="menu__arrow">→</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </nav>
       </header>
     </div>
@@ -44,13 +81,18 @@
     <main>
       <section class="about-us">
         {% for item in collections.all %} {% if item.fileSlug == "about" %}
-        <img src="{{ item.data['about-image'] }}" alt="Obrázek O Nás" />
+
         <h2>O Nás</h2>
         <div class="about-us--content">
+          <img
+            class="image--responsive"
+            src="{{ item.data['about-image'] }}"
+            alt="Obrázek O Nás"
+          />
           <p>{{ item.data['about-text'] | markdown | safe }}</p>
-          <a class="btn btn--dark" href="./pages/club.html">Více o oddílu</a>
         </div>
         {% endif %} {% endfor %}
+        <a class="btn btn--dark" href="./pages/club.html">Více o oddílu</a>
       </section>
       <section class="club__info">
         <div class="info__content">
@@ -220,9 +262,21 @@
           <p>{{ item.data.text | markdown | safe }}</p>
         </div>
         <div class="history__images">
-          <img src="/static/uploads/obrázek_2026-03-15_150800146.png" alt="" />
-          <img src="/static/uploads/obrázek_2026-05-24_145548842.png" alt="" />
-          <img src="/static/uploads/obrázek_2026-03-25_220035262.png" alt="" />
+          <img
+            class="image--responsive"
+            src="/static/uploads/obrázek_2026-03-15_150800146.png"
+            alt=""
+          />
+          <img
+            class="image--responsive"
+            src="/static/uploads/obrázek_2026-05-24_145548842.png"
+            alt=""
+          />
+          <img
+            class="image--responsive"
+            src="/static/uploads/obrázek_2026-03-25_220035262.png"
+            alt=""
+          />
         </div>
         {% endif %}{% endfor %}
       </section>
