@@ -483,6 +483,16 @@ footer > section {
   font-size: 0.95rem;
   margin-top: 2px;
 }
+.main-news {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+.news__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 
 @media screen and (min-width: 600px) {
   .sponsors__logo {
