@@ -2,6 +2,8 @@
 author: Jarda
 title: Šutr závody 14. 2. 2026
 date: 2026-02-14T22:53:00.000+01:00
+position: Šutr
+thumbnail: /static/uploads/obrázek_2026-03-25_225340093.png
 URL:
   - url_image: /static/uploads/obrázek_2026-03-25_225340093.png
     url: https://www.rajce.idnes.cz/hovetrnik/album/sutr-zavody-14-2-2026
