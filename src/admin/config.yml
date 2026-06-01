@@ -187,12 +187,7 @@ collections:
       - { label: "Autor", name: "author", widget: "string", default: "Jarda" }
       - { label: "Titulek", name: "title", widget: "string" }
       - { label: "Datum", name: "date", widget: "datetime" }
-      - {
-          label: "Obrázek",
-          name: "thumbnail",
-          widget: "image",
-          required: false,
-        }
+      - { label: "Obrázek", name: "thumbnail", widget: "image" }
       - { label: "Text aktuality", name: "body", widget: "markdown" }
       - name: "URL"
         label: "Odkazy"
