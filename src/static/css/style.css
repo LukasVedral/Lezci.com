@@ -393,6 +393,97 @@ footer > section {
   transform: translateY(0);
 }
 
+/* Hlavní kontejner karty */
+.groups {
+  background-color: #f5f5f5;
+  border: 2px solid #ff7a00; /* Oranžový rámeček kolem celé sekce */
+  border-radius: 30px;
+  padding: 32px 24px;
+  max-width: 450px;
+  margin: 20px auto;
+  font-family: sans-serif;
+}
+
+.groups h2 {
+  text-align: center;
+  margin: 0 0 10px 0;
+  font-size: 1.8rem;
+}
+
+.groups .subtitle {
+  text-align: center;
+  color: #888;
+  margin: 0 0 40px 0;
+}
+
+/* Obal časové osy */
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Mezera mezi jednotlivými dny */
+}
+
+/* Svislá černá čára procházející středem teček */
+.timeline::before {
+  content: "";
+  position: absolute;
+  /* Pozice kalkuluje šířku dne (100px) + polovinu mezery k tečce */
+  left: 78px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background-color: #000000;
+  z-index: 1;
+}
+
+/* Jeden řádek (Den + Tečka + Karta) */
+.row {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Název dne */
+.day {
+  width: 100px;
+  font-weight: bold;
+  color: #ff7a00;
+  font-size: 1.1rem;
+}
+
+/* Oranžová tečka na čáře */
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: #ff7a00;
+  border-radius: 50%;
+  position: absolute;
+  left: 72px; /* Vycentrování přesně na svislou čáru */
+  z-index: 2;
+}
+.box {
+  flex: 1;
+  background-color: #efefef;
+  border: 1px solid #ff7a00;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.group-info strong {
+  font-size: 1.1rem;
+  color: #000;
+}
+
+.group-info .time {
+  color: #666;
+  font-size: 0.95rem;
+  margin-top: 2px;
+}
+
 @media screen and (min-width: 600px) {
   .sponsors__logo {
     width: 25%;
