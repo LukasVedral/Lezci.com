@@ -3,13 +3,9 @@ const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 module.exports = function (eleventyConfig) {
   // Statické soubory
   eleventyConfig.addPassthroughCopy({ "src/static": "static" });
-
-  // TENTO ŘÁDEK CHYBÍ - kopíruje config pro CMS do složky admin
   eleventyConfig.addPassthroughCopy({
     "src/admin/config.yml": "admin/config.yml",
   });
-
-  // Pokud máš v src/admin i nějaký admin.js, přidej i ten:
   eleventyConfig.addPassthroughCopy({ "src/admin/admin.js": "admin/admin.js" });
 
   eleventyConfig.addGlobalData("now", () => new Date());
@@ -44,6 +40,7 @@ module.exports = function (eleventyConfig) {
       );
   });
 
+  // Filtry pro práci s datem
   eleventyConfig.addFilter("date", (date) => {
     return new Date(date).toLocaleDateString("cs-CZ", {
       day: "2-digit",
@@ -51,6 +48,7 @@ module.exports = function (eleventyConfig) {
       year: "numeric",
     });
   });
+
   eleventyConfig.addFilter("year", (date) => {
     return new Date(date).toLocaleDateString("cs-CZ", { year: "numeric" });
   });
@@ -68,6 +66,18 @@ module.exports = function (eleventyConfig) {
     return match ? match[1] : url;
   });
 
+  eleventyConfig.addFilter("monthshort", (date) => {
+    return (longMonth = new Date(date)
+      .toLocaleDateString("cs-CZ", { month: "short" })
+      .toUpperCase()
+      .replace(/\./g, ""));
+  });
+  eleventyConfig.addFilter("daynodot", (date) => {
+    return new Date(date)
+      .toLocaleDateString("cs-CZ", { day: "2-digit" })
+      .replace(/\./g, "");
+  });
+
   eleventyConfig.addCollection("upcoming_events", function (collectionApi) {
     const now = new Date();
     return collectionApi
@@ -79,7 +89,7 @@ module.exports = function (eleventyConfig) {
   // Sitemap plugin
   eleventyConfig.addPlugin(sitemap, {
     sitemap: {
-      hostname: "https://harcovskybloudil.cz",
+      hostname: "https://lezci.com",
     },
   });
 
