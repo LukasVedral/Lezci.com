@@ -1,1 +1,1 @@
-{ "tags": ["aktuality"] }
+{ "layout": "article.njk", "tags": "aktuality" }

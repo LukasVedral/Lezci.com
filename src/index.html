@@ -206,16 +206,12 @@
           {% for item in collections.aktuality | reverse %} {% if loop.index <=
           3 %}
 
-          <a href="{{ item.url }}" class="article__card">
+          <a href="{{item.url}}" class="article__card">
             <img
               src="{{ item.data.thumbnail }}"
               alt="{{ item.data.title }}"
               class="card--img image--responsive"
             />
-
-            <svg class="card-border" width="100%" height="100%">
-              <rect x="0" y="0" width="100%" height="100%" rx="8" />
-            </svg>
 
             <div class="card-overlay"></div>
 
