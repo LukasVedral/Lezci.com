@@ -40,6 +40,9 @@
     border: var(--color-dark) 2px solid;
     border-radius: 10px;
     align-self: center;
+    transition:
+      background-color 0.4s ease,
+      color 0.4s ease;
   }
   .divider {
     text-align: center;
@@ -155,7 +158,6 @@
     border-right: 4px solid var(--color-primary);
     border-bottom: 4px solid var(--color-primary);
 
-    bottom: 20px;
     left: 50%;
     transform: translateX(-50%) rotate(45deg);
     z-index: 5;
@@ -164,13 +166,13 @@
   }
   @keyframes arrow-down {
     0% {
-      bottom: 30px;
+      bottom: 12%;
     }
     50% {
-      bottom: 20px;
+      bottom: 9%;
     }
     100% {
-      bottom: 30px;
+      bottom: 12%;
     }
   }
 
@@ -209,7 +211,7 @@
   /* Spodní SVG výřez do V */
   .hero__shape {
     position: absolute;
-    bottom: 0;
+    bottom: -1px;
     left: 0;
     width: 100%;
     height: 60px; /* Výška spodního výřezu */
@@ -372,14 +374,12 @@ footer > section {
   padding: 0 12px;
 }
 .about-us .btn--dark {
-  align-self: flex-end;
   position: absolute;
   bottom: 0;
-  right: 0;
+  left: 0;
 }
 .about-us__text-box {
   height: auto;
-  min-height: min-content;
 
   position: relative;
   gap: 20px;
@@ -440,7 +440,8 @@ footer > section {
 }
 
 /* 2. CÍLOVÝ STAV  */
-.why-us__item.is-visible {
+.why-us__item.is-visible,
+.why-us__item:nth-child(2).is-visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -546,12 +547,14 @@ footer > section {
 .news__cards {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 24px;
   width: 100%;
 }
 
 .article__card {
   position: relative;
+  display: block;
   width: 100%;
   max-width: 400px;
   aspect-ratio: 4 / 3;
@@ -559,6 +562,51 @@ footer > section {
   overflow: hidden;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   color: var(--color-light);
+
+  overflow: hidden;
+
+  transition: transform 0.5s ease;
+}
+.article__card:hover .card-read {
+  text-decoration: underline;
+}
+.article__card .card__title {
+  transition: color 0.3s ease;
+}
+.article__card:hover .card__title {
+  color: var(--color-secondary);
+}
+.article__card:hover {
+  transform: scale(1.05);
+}
+
+.article__card .card-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.article__card .card-border rect {
+  fill: transparent;
+  stroke: var(--color-primary);
+  stroke-width: 6px;
+
+  stroke-dasharray: 1600;
+  stroke-dashoffset: 1600;
+  transform-origin: center;
+
+  transform: scaleY(-1);
+
+  transition: stroke-dashoffset 0.2s ease-in-out;
+}
+
+.article__card:hover .card-border rect {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.3s ease-in-out;
 }
 
 .card--img {
@@ -689,12 +737,19 @@ footer > section {
   padding-bottom: 16px;
   display: flex;
   flex-direction: column;
+  align-self: center;
   gap: 8px;
 }
 .event-card h3 {
   font-size: 1.25rem;
   font-weight: 600;
 }
+
+.btn--light:hover {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
+
 @media screen and (min-width: 600px) {
   .sponsors__logo {
     width: 25%;
@@ -707,7 +762,7 @@ footer > section {
   }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 960px) {
   main {
     padding: 80px;
   }
@@ -727,36 +782,38 @@ footer > section {
   }
   .hero__overlay {
     background: linear-gradient(
-      to right,
+      to left,
       rgba(0, 0, 0, 0.2),
-      rgba(0, 0, 0, 0.6) 50%,
-      rgba(0, 0, 0, 0.75)
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0.6)
     );
   }
   .hero__content {
-    text-align: right;
-    align-items: end;
-    margin-top: 100px;
-    margin-right: 100px;
+    text-align: start;
+    align-items: start;
+    margin-top: 128px;
+    margin-left: 64px;
   }
   .hero__wrapper {
-    justify-content: end;
+    justify-content: start;
     align-items: start;
   }
   .hero__text--big {
     text-transform: none;
     font-size: 3.5rem;
-    font-weight: 400;
+    font-weight: 600;
     margin-bottom: 1rem;
   }
   .hero__text--small {
     font-size: 1.5rem;
-    font-weight: 100;
+    font-weight: 300;
     margin-bottom: 3rem;
   }
   .hero__btn {
     justify-self: end;
-    align-self: center;
+    align-self: flex-start;
+    font-weight: 600;
+    letter-spacing: 1px;
   }
   .about-us--content {
     display: flex;
@@ -773,7 +830,7 @@ footer > section {
     object-fit: cover; /* Zajistí, že se obrázek nedeformuje */
     z-index: 2;
     position: relative;
-    margin-bottom: 24px;
+    margin-bottom: 40px;
   }
 
   /* Šedivý rámeček: flexibilní šířka, která reaguje na zmenšování prohlížeče */
@@ -781,23 +838,102 @@ footer > section {
     background-color: #f5f5f5;
     border: 1px solid #333;
     height: auto;
-    width: 65%;
-    margin-left: -5%;
-    margin-top: 24px;
+
+    margin-left: -7%;
+    margin-top: 80px;
     padding: 40px 120px;
     z-index: 1;
-
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Tlačí tlačítko dolů */
+    justify-content: center;
   }
   .about-us .btn--dark {
     position: relative;
+    align-self: end;
   }
 
   .about-us h2 {
     font-size: 2.5rem;
     margin-bottom: 24px;
     margin-left: calc(40% - 5% + 80px);
+  }
+  .main__why-us {
+    width: 100%;
+    display: grid;
+    grid-template-areas:
+      "heading heading"
+      "why-us groups";
+    grid-template-columns: 1fr auto;
+  }
+  .main__why-us h2 {
+    grid-area: heading;
+  }
+  .why-us {
+    grid-area: why-us;
+  }
+  .groups {
+    grid-area: groups;
+    padding: 40px 60px;
+    border-width: 2px;
+  }
+  .news__cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+  }
+  .article__card {
+    min-width: 300px;
+    aspect-ratio: 16/9;
+    width: calc(33.333% - 40px);
+  }
+  .article__card .card__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .article__card .card-meta {
+    flex-direction: row;
+    gap: 16px;
+    margin-top: 12px;
+    margin-bottom: 8px;
+  }
+
+  .upcoming-events {
+    position: relative;
+    padding-top: 80px;
+    flex-direction: row;
+  }
+  .event-card {
+    flex: 1;
+  }
+  .divider--mountain {
+    display: block;
+    position: absolute;
+    /* transform: scale(2); */
+    left: -80px;
+    top: -136.5px;
+  }
+
+  .divider--mountain path {
+    stroke: var(--color-dark);
+    stroke-width: 2.5;
+  }
+  .divider--mountain + .divider::before {
+    margin-left: 238px;
+  }
+  .divider--mountain + .divider {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; /* ::before | text | ::after */
+    align-items: center;
+    position: absolute;
+    left: 0; /* místo left: 50% */
+    transform: none; /* transform už nepotřebujeme */
+    top: 0;
+    width: 100%;
+  }
+
+  .why-us__item,
+  .why-us__item:nth-child(2) {
+    transform: translateX(-200px);
   }
 }
