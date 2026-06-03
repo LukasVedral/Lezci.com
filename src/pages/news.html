@@ -140,38 +140,7 @@
           </div>
 
           <h3>{{ item.data.title }}</h3>
-          <p>{{ item.content | markdown | safe }}</p>
-
-          {# Textové odkazy (bez obrázku) pod textem #} {% if item.data.URL %}
-          {% for link in item.data.URL %} {% if not link.url_image %}
-          <a href="{{ link.url }}" class="card-link">{{ link.url_name }}</a>
-          {% endif %} {% endfor %} {% endif %}
-        </div>
-
-        {# Pravý sloupec — obrázky a youtube #}
-        <div class="card-gallery">
-          {% if item.data.URL %} {% for link in item.data.URL %} {% if
-          link.url_image %}
-          <a href="{{ link.url }}" class="gallery-thumb">
-            <img
-              class="image--responsive"
-              src="{{ link.url_image }}"
-              alt="{{ link.url_name }}"
-            />
-          </a>
-          {% endif %} {% endfor %} {% endif %} {% if item.data.youtube_video %}
-          <a
-            href="https://youtu.be/{{ item.data.youtube_video }}"
-            class="yt-thumb"
-            target="_blank"
-          >
-            <img
-              class="image--responsive"
-              src="https://img.youtube.com/vi/{{ item.data.youtube_video }}/mqdefault.jpg"
-              alt="YouTube video"
-            />
-          </a>
-          {% endif %}
+          <div class="news__text">{{ item.content | markdown | safe }}</div>
         </div>
       </div>
       {% endfor %}

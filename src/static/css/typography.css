@@ -1,6 +1,7 @@
 a {
   text-decoration: none;
   color: var(--color-dark);
+  word-break: break-all;
 }
 a,
 p,
