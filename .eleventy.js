@@ -28,16 +28,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("markdown", (content) => {
     if (!content) return "";
     const md = require("markdown-it")({ html: true });
-    const rendered = md.render(content);
-    return rendered
-      .replace(
-        /::icon-heart::/g,
-        `<img src="/static/images/svg/icon--heart.svg" alt="srdce">`,
-      )
-      .replace(
-        /::icon-money::/g,
-        `<img src="/static/images/svg/icon--money-bag.svg" alt="pytel s penězi">`,
-      );
+    return md.render(content);
   });
 
   // Filtry pro práci s datem
@@ -76,6 +67,9 @@ module.exports = function (eleventyConfig) {
     return new Date(date)
       .toLocaleDateString("cs-CZ", { day: "2-digit" })
       .replace(/\./g, "");
+  });
+  eleventyConfig.addFilter("stripLinks", (content) => {
+    return content.replace(/<a\b[^>]*>(.*?)<\/a>/gi, "$1");
   });
 
   eleventyConfig.addCollection("upcoming_events", function (collectionApi) {

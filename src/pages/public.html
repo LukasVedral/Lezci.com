@@ -6,11 +6,6 @@
     <title>Lezci.com - Pro veřejnost</title>
     <meta name="description" content="Nejdůležitější věci ohledně závodu" />
     <link rel="stylesheet" href="/static/css/style.css" />
-    <link rel="preload" as="image" href="/static/img/index-bg.avif" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
-    />
   </head>
   <body>
     <div class="header">
@@ -86,57 +81,11 @@
     <main>
       <section class="usefull-vids">
         <h2 class="divider--side">Užitečná videa</h2>
-        <div class="swiper mySwiper">
-          <div class="swiper-wrapper">
-            {% for video in collections.useful_videos %}
-            <div class="swiper-slide video-card">
-              <a
-                href="{{video.data.url}}"
-                class="video-play"
-                aria-label="Přehrát video"
-              >
-                <div class="video-thumb">
-                  <img
-                    src="https://img.youtube.com/vi/{{video.data.url | youtubeId}}/mqdefault.jpg"
-                    alt="Název videa"
-                  />
-
-                  <svg viewBox="0 0 68 48" width="68" height="48">
-                    <path
-                      d="M66.5 7.7a8.5 8.5 0 0 0-6-6C56.1 0 34 0 34 0S11.9 0 7.5 1.7a8.5 8.5 0 0 0-6 6C0 12.1 0 24 0 24s0 11.9 1.5 16.3a8.5 8.5 0 0 0 6 6C11.9 48 34 48 34 48s22.1 0 26.5-1.7a8.5 8.5 0 0 0 6-6C68 35.9 68 24 68 24s0-11.9-1.5-16.3z"
-                      fill="#ff0000"
-                    />
-                    <path d="M45 24L27 14v20z" fill="#fff" />
-                  </svg>
-                </div>
-                <div class="video-info">
-                  <h3>{{video.data.title}}</h3>
-                  <span>{{video.data.author}}</span>
-                </div>
-              </a>
-            </div>
-            {% endfor %}
-          </div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-pagination"></div>
-        </div>
+        <!--swiper-->
       </section>
 
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M17.95 16.175L15.1 13.35L16.525 11.95L17.95 13.35L21.475 9.825L22.9 11.225L17.95 16.175ZM11 21L7.825 18.15C6.625 17.0667 5.59567 16.1 4.737 15.25C3.87834 14.4 3.17 13.6 2.612 12.85C2.054 12.1 1.64567 11.375 1.387 10.675C1.12834 9.975 0.999336 9.24167 1 8.475C1 6.90833 1.525 5.60433 2.575 4.563C3.625 3.52167 4.93334 3.00067 6.5 3C7.36667 3 8.19167 3.18333 8.975 3.55C9.75834 3.91667 10.4333 4.43333 11 5.1C11.5667 4.43333 12.2417 3.91667 13.025 3.55C13.8083 3.18333 14.6333 3 15.5 3C16.85 3 17.9833 3.37933 18.9 4.138C19.8167 4.89667 20.4417 5.85067 20.775 7H18.65C18.35 6.33333 17.9083 5.83333 17.325 5.5C16.7417 5.16667 16.1333 5 15.5 5C14.65 5 13.9167 5.22933 13.3 5.688C12.6833 6.14667 12.1083 6.75067 11.575 7.5H10.425C9.90834 6.75 9.32067 6.146 8.662 5.688C8.00334 5.23 7.28267 5.00067 6.5 5C5.55 5 4.729 5.32933 4.037 5.988C3.345 6.64667 2.99934 7.47533 3 8.474C3 9.024 3.11667 9.58233 3.35 10.149C3.58334 10.7157 4 11.37 4.6 12.112C5.2 12.854 6.01667 13.7207 7.05 14.712C8.08334 15.7033 9.4 16.8993 11 18.3C11.4333 17.9167 11.9417 17.475 12.525 16.975C13.1083 16.475 13.575 16.0583 13.925 15.725L14.15 15.95L14.638 16.438L15.125 16.925L15.35 17.15C14.9833 17.4833 14.5167 17.896 13.95 18.388C13.3833 18.88 12.8833 19.3173 12.45 19.7L11 21Z"
-          fill="#FF6600"
-        />
-      </svg>
       <section class="offered-events">
-        <h2>Nabízené akce</h2>
+        <h2 class="divider--side">Nabízené akce</h2>
         <div class="offers">
           {% for item in collections.all %}{%if item.fileSlug ==
           "offered_events" %}
@@ -165,7 +114,7 @@
                 <img
                   src="/static/images/svg/slackline-icon.svg"
                   alt="ikona slackline"
-                  class="card-icon"
+                  class="card-icon card-icon--slackline"
                 />
                 {% endif %}
 
@@ -403,30 +352,9 @@
 
     <script type="module" src="/static/js/hamburger.js"></script>
     <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-
-    <!-- Initialize Swiper -->
+    <script type="module" src="/src/static/js/main.js"></script>
     <script>
-      var swiper = new Swiper(".mySwiper", {
-        //effect: "coverflow",
-        grabCursor: true,
-        //centeredSlides: true,
-        slidesPerView: 2,
-        /*coverflowEffect: {
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true,
-        },*/
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        pagination: {
-          el: ".swiper-pagination",
-        },
-      });
+      document.querySelector(".swiper").style.overflow = "visible";
     </script>
 
     <script>

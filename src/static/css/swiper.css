@@ -1,0 +1,8 @@
+@import url(swiper/css);
+@import url(swiper/css/navigation);
+@import url(swiper/css/pagination);
+
+:root {
+  --swiper-theme-color: var(--color-primary);
+  --swiper-navigation-size: 4rem;
+}
