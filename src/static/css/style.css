@@ -1,7 +1,8 @@
-@layer reset, init, typography, hamburger, design;
+@layer reset, init, typography, hamburger, design, swiper;
 @import url(normalize.css) layer(reset);
 @import url(typography.css) layer(typography);
 @import url(hamburger.css) layer(hamburger);
+@import url(swiper.css) layer(swiper);
 @layer init {
   :root {
     --color-primary: #ff0000;
@@ -84,26 +85,6 @@
     width: 100%;
     height: auto;
   }
-  .swiper {
-    width: 100%;
-    height: 100%;
-  }
-
-  .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #444;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 
   header {
     position: relative;
@@ -145,7 +126,12 @@
     );
     z-index: 2;
   }
-
+  .hero__content-wrapper{
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto ;
+  }
   .hero__content {
     position: relative;
     z-index: 3;
@@ -896,6 +882,65 @@ footer > section {
 .card-sub {
   font-size: 14px;
 }
+
+
+
+.info__header{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.info__content .info, .info__content, .club__info{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.info__content, .club__info{
+  gap: 64px;
+}
+
+
+
+.club__history{
+  background-color: var(--color-dark);
+margin-left: -20px;
+  margin-right: -20px;
+
+  padding:40px 20px ;
+}
+.club__history p, .club__history h2{
+  color: var(--color-light);
+}
+.history__content header{
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  font-size: 36px;
+  font-weight: 300;
+}
+.history__content{
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+section:has(> .swiper) header{
+  display: flex ;
+  margin-bottom: 24px;
+  align-items: center;
+  gap: 16px;
+
+}
+
+section:has(> .swiper) h2{
+  font-size: 36px;
+}
+
+section:has(> .swiper) header img{
+  width: 32px;
+  height: 32px;
+}
+
 @media screen and (min-width: 600px) {
   .sponsors__logo {
     width: 25%;
@@ -937,7 +982,7 @@ footer > section {
   .hero__content {
     text-align: start;
     align-items: start;
-    margin-top: 128px;
+    margin-top: 15vw;
     margin-left: 64px;
   }
   .hero__wrapper {
@@ -1000,7 +1045,6 @@ footer > section {
 
   .about-us h2 {
     font-size: 2.5rem;
-    margin-bottom: 24px;
     margin-left: calc(40% - 5% + 80px);
   }
   .main__why-us {
@@ -1344,4 +1388,90 @@ footer > section {
   }
 }
 
-/*swiper*/
+.article__link-item{
+transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.article__link-item a:hover {
+  background: var(--color-dark);
+  color: #fff;
+}
+
+.article__link-item img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.article__link-item span {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* ================================
+   TABLET — 600px+
+   ================================ */
+@media (min-width: 600px) {
+  .article {
+    padding: 1.75rem 1.5rem 3.5rem;
+  }
+
+  .article__thumbnail {
+    max-height: 360px;
+  }
+
+  .article__title {
+    font-size: 1.75rem;
+  }
+
+  .article__info {
+    gap: 1rem;
+    flex-wrap: nowrap;
+  }
+
+  .article__date::before {
+    margin-right: 1rem;
+  }
+
+  .article__body {
+    font-size: 1.05rem;
+  }
+
+  .article__body h2 {
+    font-size: 1.4rem;
+  }
+
+  .article__body h3 {
+    font-size: 1.15rem;
+  }
+
+  .article__links-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ================================
+   DESKTOP — 900px+
+   ================================ */
+@media (min-width: 900px) {
+  .article {
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .article__thumbnail {
+    max-height: 480px;
+  }
+
+  .article__title {
+    font-size: 2rem;
+  }
+
+  .article__links-list {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+

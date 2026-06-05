@@ -1,36 +1,52 @@
-import Swiper from "swiper";
-import { Navigation } from "swiper/modules";
+document.addEventListener('DOMContentLoaded', function () {
+    const swiperDocuments = new Swiper('#slider-documents', {
+        slidesPerView: 1,
+        loop: document.querySelectorAll(' #slider-documents .swiper-slide').length >= 6,
+        watchOverflow: false,
 
-import "/src/styles/swiper.css";
-import "../styles/style.css";
+        breakpoints: {
+            600: {
+            slidesPerView: 2,
+            spaceBetween: 48,
+            },
+            960: {
+            slidesPerView: 3,
+            spaceBetween: 64,
+            },
+        },
 
-// ...existing code...
-import Swiper from "swiper";
-import { Navigation, Pagination } from "swiper/modules";
 
-import "/src/static/css/swiper.css";
-import "/src/static/css/style.css";
+        pagination: {
+        el: '#slider-documents .swiper-pagination',
+        clickable: true,
+        },
+        navigation: {
+        nextEl: '#slider-documents .swiper-button-next',
+        prevEl: '#slider-documents .swiper-button-prev',
+        },
+    });
 
-const swiper = new Swiper(".swiper", {
-  modules: [Navigation, Pagination],
-  loop: true,
-  slidesPerView: 2.5,
-  centeredSlides: true,
-  spaceBetween: 10,
-
-  // Navigation arrows
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-
-  // Pagination
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-
-  // optional: autoplay (uncomment if desired)
-  // autoplay: { delay: 5000, disableOnInteraction: false }
+  const swiperTeam = new Swiper('#slider-team', {
+    slidesPerView: 1,
+    loop: document.querySelectorAll(' #slider-team .swiper-slide').length >= 6,
+    watchOverflow: false,
+            breakpoints: {
+            600: {
+            slidesPerView: 2,
+            spaceBetween: 48,
+            },
+            960: {
+            slidesPerView: 3,
+            spaceBetween: 64,
+            },
+        },
+    pagination: {
+      el: '#slider-team .swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '#slider-team .swiper-button-next',
+      prevEl: '#slider-team .swiper-button-prev',
+    },
+  });
 });
-// ...existing code...

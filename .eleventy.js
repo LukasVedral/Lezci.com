@@ -87,6 +87,14 @@ module.exports = function (eleventyConfig) {
     },
   });
 
+  eleventyConfig.addCollection("dokumenty", col =>
+  col.getFilteredByGlob("src/content/important_documents/*.md")
+);
+
+eleventyConfig.addCollection("tym", col =>
+  col.getFilteredByGlob("src/content/team/*.md")
+);
+
   return {
     dir: {
       input: "src",

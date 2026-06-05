@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lezci.com - Oddíl</title>
     <meta name="description" content="Nejdůležitější věci ohledně závodu" />
-    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="/static/css/style.css" />
   </head>
   <body>
     <div class="header">
@@ -80,19 +81,17 @@
 
     <main>
       <section class="about-us">
-        {% for item in collections.all %} {% if item.fileSlug == "about" %}
-
-        <h2>O Nás</h2>
-        <div class="about-us--content">
-          <img
-            class="image--responsive"
-            src="{{ item.data['about-image'] }}"
-            alt="Obrázek O Nás"
-          />
-          <p>{{ item.data['about-text'] | markdown | safe }}</p>
-        </div>
-        {% endif %} {% endfor %}
-        <a class="btn btn--dark" href="./pages/club.html">Více o oddílu</a>
+          {% for item in collections.all %} {% if item.fileSlug == "about" %}
+        
+          <h2 id="about">O Nás</h2>
+          <div class="about-us--content">
+            <img class="image--responsive" src="{{ item.data['about-image'] }}" alt="Obrázek O Nás" />
+            <div class="about-us__text-box">
+              <p>{{ item.data['about-text'] | markdown | safe }}</p>
+              <a class="btn btn--dark" href="./pages/club.html">Více o oddílu</a>
+            </div>
+          </div>
+          {% endif %} {% endfor %}
       </section>
       <section class="club__info">
         <div class="info__content">
@@ -177,62 +176,75 @@
           {% endif %} {% endfor %}
         </div>
       </section>
+
+
+
       <section>
         <header>
-          <img src="/static/images/svg/icon--file.svg" alt="ikona soubor" />
+          <img src="/static/images/svg/icon--pdf.svg" alt="ikona pdf" />
           <h2>Důležité dokumenty</h2>
         </header>
-        <div class="swiper mySwiper">
-          <div class="swiper-wrapper">
+
+        <div class="swiper wrapper" id="slider-documents">
+          <div class="swiper-wrapper wrapper-inner">
             {% for item in collections.important_documents %}
-            <div class="swiper-slide file-cards">
-              <div class="card__file">
-                <img src="/static/images/svg/icon--pdf.svg" alt="ikona pdf" />
-                <h3>{{ item.data.title }}</h3>
-                <p>{{ item.data.description | markdown | safe }}</p>
-                <a href="{{ item.data.file }}" download>
-                  <img
-                    src="/static/images/svg/icon--download.svg"
-                    alt="ikona stahování"
-                  />
-                  Stáhnout
-                </a>
+
+              <div class="swiper-slide slide">
+                <div class="bg-info">
+                  <img src="/static/images/svg/icon--pdf.svg" alt="ikona pdf" />
+                  <h3>{{item.data.title}}</h3>
+                  <div class="bg-info__more">
+                    <p>{{item.data.description}}</p>
+                    <a href="{{ item.data.file }}" download>
+                      <img src="/static/images/svg/icon--download.svg" alt="ikona stahování" />
+                      Stáhnout
+                    </a>
+                  </div>
+
+                </div>
+
               </div>
-            </div>
-            {% endfor %}
+
+              {%endfor%}
           </div>
 
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-pagination"></div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+            
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
       </section>
+
+      <script>
+        document.querySelectorAll('#slider-documents .bg-info').forEach(card => {
+            card.addEventListener('click', () => {
+              card.classList.toggle('is-open');
+            });
+          });
+      </script>
+
+
       <section>
+
         <header>
           <img src="/static/images/svg/icon--team.svg" alt="ikona týmu" />
           <h2>Náš tým</h2>
         </header>
 
-        <div class="swiper teamSwiper">
-          <div class="swiper-wrapper">
-            {% for member in collections.team %}
-            <div class="member-card swiper-slide">
-              <img
-                src="{{ member.data.photo }}"
-                alt="{{ member.data.name }}"
-                class="member-photo"
-              />
+        <div class="swiper wrapper teamSwiper" id="slider-team">
+          <div class="swiper-wrapper wrapper-inner">
 
+            {% for member in collections.team %}
+            <div class="member-card swiper-slide slide">
+              <img src="{{ member.data.photo }}" alt="{{ member.data.name }}" class="member-photo" />
               <div class="member-info">
                 <div class="member-name-row">
                   <h3>{{ member.data.name }}</h3>
                   <span class="role">{{ member.data.role }}</span>
                 </div>
-
-                <a
-                  href="tel:{{ member.data.phone | replace(' ', '') }}"
-                  class="member-contact"
-                >
+                <a href="tel:{{ member.data.phone | replace(' ', '') }}" class="member-contact">
                   <i class="ti ti-phone"></i>
                   {{ member.data.phone }}
                 </a>
@@ -243,12 +255,18 @@
               </div>
             </div>
             {% endfor %}
+
           </div>
+          <!-- If you need pagination dots -->
+          <div class="swiper-pagination"></div>
+
+          <!-- If you need navigation buttons -->
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
-          <div class="swiper-pagination"></div>
         </div>
+
       </section>
+
       <section class="club__history">
         <div class="history__content">
           {% for item in collections.all%} {% if item.fileSlug == "history" %}
@@ -517,20 +535,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 
     <!-- Initialize Swiper -->
-    <script>
-      // 1. Inicializace pro dokumenty
-      const filesContainer = document.querySelector(".mySwiper");
-      var filesSwiper = new Swiper(filesContainer, {
-        grabCursor: true,
-        slidesPerView: 3,
-        navigation: {
-          nextEl: filesContainer.querySelector(".swiper-button-next"),
-          prevEl: filesContainer.querySelector(".swiper-button-prev"),
-        },
-        pagination: {
-          el: filesContainer.querySelector(".swiper-pagination"),
-        },
-      });
-    </script>
+     <script src="/static/js/main.js"></script>¨
+
   </body>
 </html>
