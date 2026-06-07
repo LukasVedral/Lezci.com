@@ -18,6 +18,7 @@
   }
   body {
     background-color: var(--color-light);
+    
   }
 
   main {
@@ -29,11 +30,18 @@
     gap: 80px;
     max-width: 1400px;
     margin-top: 80px;
+    overflow-x: hidden;
   }
   .btn--dark {
     background-color: var(--color-dark);
     padding: 12px 32px;
     color: var(--color-light);
+    border: var(--color-dark) 2px solid;
+    transition: all .3s ease;
+  }
+  .btn--dark:hover{
+    background-color: var(--color-light);
+    color: var(--color-primary);
   }
   .btn--light {
     background-color: var(--color-light);
@@ -155,14 +163,14 @@
     transform: translateX(-50%) rotate(45deg);
     z-index: 5;
 
-    animation: arrow-down 1s ease-in infinite;
+    animation: arrow-down 1.2s ease-in infinite;
   }
   @keyframes arrow-down {
     0% {
       bottom: 12%;
     }
     50% {
-      bottom: 9%;
+      bottom: 10%;
     }
     100% {
       bottom: 12%;
@@ -941,6 +949,10 @@ section:has(> .swiper) header img{
   height: 32px;
 }
 
+
+
+
+
 @media screen and (min-width: 600px) {
   .sponsors__logo {
     width: 25%;
@@ -1149,6 +1161,12 @@ section:has(> .swiper) header img{
     justify-content: center;
     align-items: start;
   }
+
+
+    .club__info{
+      flex-direction: row;
+      align-items: center;
+    }
 }
 
 .article {

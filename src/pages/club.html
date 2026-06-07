@@ -236,22 +236,30 @@
         <div class="swiper wrapper teamSwiper" id="slider-team">
           <div class="swiper-wrapper wrapper-inner">
 
+  
             {% for member in collections.team %}
             <div class="member-card swiper-slide slide">
-              <img src="{{ member.data.photo }}" alt="{{ member.data.name }}" class="member-photo" />
-              <div class="member-info">
-                <div class="member-name-row">
-                  <h3>{{ member.data.name }}</h3>
-                  <span class="role">{{ member.data.role }}</span>
+              <div class="slide-wrapper">
+                {%if member.data.photo%}
+                  <img src="{{ member.data.photo }}" alt="{{ member.data.name }}" class="member-photo" />
+                {%else%}
+                  <img src="/static/images/default-user.png" alt="{{ member.data.name }}" class="member-photo" />
+                {%endif%}
+
+                <div class="member-info">
+                  <div class="member-name-row">
+                    <h3>{{ member.data.name }}</h3>
+                    <span class="role">{{ member.data.role }}</span>
+                  </div>
+                  <a href="tel:{{ member.data.phone | replace(' ', '') }}" class="member-contact">
+                    <i class="ti ti-phone"></i>
+                    {{ member.data.phone }}
+                  </a>
+                  <a href="mailto:{{ member.data.email }}" class="member-contact">
+                    <i class="ti ti-mail"></i>
+                    {{ member.data.email }}
+                  </a>
                 </div>
-                <a href="tel:{{ member.data.phone | replace(' ', '') }}" class="member-contact">
-                  <i class="ti ti-phone"></i>
-                  {{ member.data.phone }}
-                </a>
-                <a href="mailto:{{ member.data.email }}" class="member-contact">
-                  <i class="ti ti-mail"></i>
-                  {{ member.data.email }}
-                </a>
               </div>
             </div>
             {% endfor %}
@@ -265,6 +273,7 @@
           <div class="swiper-button-next"></div>
         </div>
 
+        <a class="btn btn--dark" href="/pages/our-team/">Celý tým</a>
       </section>
 
       <section class="club__history">
