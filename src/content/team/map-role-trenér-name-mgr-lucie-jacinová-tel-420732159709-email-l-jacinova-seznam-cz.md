@@ -1,6 +1,6 @@
 ---
 name: Mgr. Lucie Jacinová
-role: trenér
+role: organizátor akcí
 tel: "+420732159709"
 email: l.jacinova@seznam.cz
 ---

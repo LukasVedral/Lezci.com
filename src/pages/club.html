@@ -257,24 +257,23 @@
                   class="member-photo"
                 />
                 {%endif%}
-
+                <span class="role">{{ member.data.role | capital}}</span>
                 <div class="member-info">
                   <div class="member-name-row">
                     <h3>{{ member.data.name }}</h3>
-                    <span class="role">{{ member.data.role }}</span>
                   </div>
                   <a
-                    href="tel:{{ member.data.phone | replace(' ', '') }}"
+                    href="tel:{{ member.data.tel | replace(' ', '') }}"
                     class="member-contact"
                   >
-                    <i class="ti ti-phone"></i>
-                    {{ member.data.phone }}
+                    <img src="/static/images/svg/icon--phone.svg" alt="" />
+                    {{ member.data.tel }}
                   </a>
                   <a
                     href="mailto:{{ member.data.email }}"
                     class="member-contact"
                   >
-                    <i class="ti ti-mail"></i>
+                    <img src="/static/images/svg/icon--mail.svg" alt="" />
                     {{ member.data.email }}
                   </a>
                 </div>
@@ -294,55 +293,102 @@
       </section>
 
       <section class="club__history">
-        <div class="history__content">
-          {% for item in collections.all%} {% if item.fileSlug == "history" %}
-          <header>
-            <img
-              src="/static/images/svg/icon--history.svg"
-              alt="ikona historie"
-            />
-            <h2>{{ item.data.title }}</h2>
-          </header>
-          <p>{{ item.data.text | markdown | safe }}</p>
+        <div class="history__container">
+          <div class="history__content">
+            {% for item in collections.all%} {% if item.fileSlug == "history" %}
+            <header>
+              <img
+                src="/static/images/svg/icon--history.svg"
+                alt="ikona historie"
+              />
+              <h2>{{ item.data.title }}</h2>
+            </header>
+            <div class="history__text">
+              <p>{{ item.data.text | markdown | safe }}</p>
+            </div>
+          </div>
+
+          <div class="history__images">
+            {%for photo in item.data.historical_photos%}
+            <a class="history-card" href="{{photo.photo}}">
+              <img class="image--responsive" src="{{photo.photo}}" alt="" />
+            </a>
+            {%endfor%}
+          </div>
+          {% endif %}{% endfor %}
         </div>
-        <div class="history__images">
-          {%for photo in item.data.historical_photos%}
-          <a href="{{photo.photo}}">
-            <img src="{{photo.photo}}" alt="" />
-          </a>
-          {%endfor%}
-        </div>
-        {% endif %}{% endfor %}
       </section>
       {% if collections.upcoming_events and collections.upcoming_events.length >
       0 %}
 
       <section class="upcoming-events">
-        <img
-          src="/static/images/svg/icon--upcoming-events.svg"
-          alt="ikona nadcházejících akcí"
-        />
-        <h2>Nadcházející akce</h2>
+        <header>
+          <img
+            src="/static/images/svg/icon--upcoming-events.svg"
+            alt="ikona kalendáře"
+          />
+          <h2>Nadcházející akce</h2>
+        </header>
+
         {% for event in collections.upcoming_events %} {% if loop.index <= 2 %}
         <div class="event-card">
-          <div class="card-top">
-            <span>
-              <i class="ti ti-calendar"></i>
-              {{ event.data.datetime | year }}
-            </span>
+          <span class="event-card__year">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M2.66667 1.33301H10.6667C11.3739 1.33301 12.0522 1.61396 12.5523 2.11406C13.0524 2.61415 13.3333 3.29243 13.3333 3.99967V10.6663C13.3333 11.3736 13.0524 12.0519 12.5523 12.552C12.0522 13.0521 11.3739 13.333 10.6667 13.333H2.66667C1.95942 13.333 1.28115 13.0521 0.781049 12.552C0.280952 12.0519 0 11.3736 0 10.6663V3.99967C0 3.29243 0.280952 2.61415 0.781049 2.11406C1.28115 1.61396 1.95942 1.33301 2.66667 1.33301ZM2.66667 2.66634C2.31304 2.66634 1.97391 2.80682 1.72386 3.05687C1.47381 3.30691 1.33333 3.64605 1.33333 3.99967V10.6663C1.33333 11.02 1.47381 11.3591 1.72386 11.6091C1.97391 11.8592 2.31304 11.9997 2.66667 11.9997H10.6667C11.0203 11.9997 11.3594 11.8592 11.6095 11.6091C11.8595 11.3591 12 11.02 12 10.6663V3.99967C12 3.64605 11.8595 3.30691 11.6095 3.05687C11.3594 2.80682 11.0203 2.66634 10.6667 2.66634H2.66667Z"
+                fill="#1c112b"
+              />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M0.666504 5.33333C0.666504 5.15652 0.736742 4.98695 0.861766 4.86193C0.98679 4.7369 1.15636 4.66667 1.33317 4.66667H11.9998C12.1766 4.66667 12.3462 4.7369 12.4712 4.86193C12.5963 4.98695 12.6665 5.15652 12.6665 5.33333C12.6665 5.51014 12.5963 5.67971 12.4712 5.80474C12.3462 5.92976 12.1766 6 11.9998 6H1.33317C1.15636 6 0.98679 5.92976 0.861766 5.80474C0.736742 5.67971 0.666504 5.51014 0.666504 5.33333ZM3.99984 0C4.17665 0 4.34622 0.0702379 4.47124 0.195262C4.59627 0.320286 4.6665 0.489856 4.6665 0.666667V3.33333C4.6665 3.51014 4.59627 3.67971 4.47124 3.80474C4.34622 3.92976 4.17665 4 3.99984 4C3.82303 4 3.65346 3.92976 3.52843 3.80474C3.40341 3.67971 3.33317 3.51014 3.33317 3.33333V0.666667C3.33317 0.489856 3.40341 0.320286 3.52843 0.195262C3.65346 0.0702379 3.82303 0 3.99984 0ZM9.33317 0C9.50998 0 9.67955 0.0702379 9.80458 0.195262C9.9296 0.320286 9.99984 0.489856 9.99984 0.666667V3.33333C9.99984 3.51014 9.9296 3.67971 9.80458 3.80474C9.67955 3.92976 9.50998 4 9.33317 4C9.15636 4 8.98679 3.92976 8.86177 3.80474C8.73674 3.67971 8.6665 3.51014 8.6665 3.33333V0.666667C8.6665 0.489856 8.73674 0.320286 8.86177 0.195262C8.98679 0.0702379 9.15636 0 9.33317 0Z"
+                fill="#1c112b"
+              />
+              <path
+                d="M3.99984 7.33366C3.99984 7.51047 3.9296 7.68004 3.80457 7.80506C3.67955 7.93009 3.50998 8.00033 3.33317 8.00033C3.15636 8.00033 2.98679 7.93009 2.86177 7.80506C2.73674 7.68004 2.6665 7.51047 2.6665 7.33366C2.6665 7.15685 2.73674 6.98728 2.86177 6.86225C2.98679 6.73723 3.15636 6.66699 3.33317 6.66699C3.50998 6.66699 3.67955 6.73723 3.80457 6.86225C3.9296 6.98728 3.99984 7.15685 3.99984 7.33366ZM3.99984 10.0003C3.99984 10.1771 3.9296 10.3467 3.80457 10.4717C3.67955 10.5968 3.50998 10.667 3.33317 10.667C3.15636 10.667 2.98679 10.5968 2.86177 10.4717C2.73674 10.3467 2.6665 10.1771 2.6665 10.0003C2.6665 9.82351 2.73674 9.65394 2.86177 9.52892C2.98679 9.4039 3.15636 9.33366 3.33317 9.33366C3.50998 9.33366 3.67955 9.4039 3.80457 9.52892C3.9296 9.65394 3.99984 9.82351 3.99984 10.0003ZM7.33317 7.33366C7.33317 7.51047 7.26293 7.68004 7.13791 7.80506C7.01288 7.93009 6.84332 8.00033 6.6665 8.00033C6.48969 8.00033 6.32012 7.93009 6.1951 7.80506C6.07008 7.68004 5.99984 7.51047 5.99984 7.33366C5.99984 7.15685 6.07008 6.98728 6.1951 6.86225C6.32012 6.73723 6.48969 6.66699 6.6665 6.66699C6.84332 6.66699 7.01288 6.73723 7.13791 6.86225C7.26293 6.98728 7.33317 7.15685 7.33317 7.33366ZM7.33317 10.0003C7.33317 10.1771 7.26293 10.3467 7.13791 10.4717C7.01288 10.5968 6.84332 10.667 6.6665 10.667C6.48969 10.667 6.32012 10.5968 6.1951 10.4717C6.07008 10.3467 5.99984 10.1771 5.99984 10.0003C5.99984 9.82351 6.07008 9.65394 6.1951 9.52892C6.32012 9.4039 6.48969 9.33366 6.6665 9.33366C6.84332 9.33366 7.01288 9.4039 7.13791 9.52892C7.26293 9.65394 7.33317 9.82351 7.33317 10.0003ZM10.6665 7.33366C10.6665 7.51047 10.5963 7.68004 10.4712 7.80506C10.3462 7.93009 10.1766 8.00033 9.99984 8.00033C9.82303 8.00033 9.65346 7.93009 9.52843 7.80506C9.40341 7.68004 9.33317 7.51047 9.33317 7.33366C9.33317 7.15685 9.40341 6.98728 9.52843 6.86225C9.65346 6.73723 9.82303 6.66699 9.99984 6.66699C10.1766 6.66699 10.3462 6.73723 10.4712 6.86225C10.5963 6.98728 10.6665 7.15685 10.6665 7.33366ZM10.6665 10.0003C10.6665 10.1771 10.5963 10.3467 10.4712 10.4717C10.3462 10.5968 10.1766 10.667 9.99984 10.667C9.82303 10.667 9.65346 10.5968 9.52843 10.4717C9.40341 10.3467 9.33317 10.1771 9.33317 10.0003C9.33317 9.82351 9.40341 9.65394 9.52843 9.52892C9.65346 9.4039 9.82303 9.33366 9.99984 9.33366C10.1766 9.33366 10.3462 9.4039 10.4712 9.52892C10.5963 9.65394 10.6665 9.82351 10.6665 10.0003Z"
+                fill="#1c112b"
+              />
+            </svg>
+            {{ event.data.datetime | year }}
+          </span>
 
-            <span><i class="ti ti-map-pin"></i>{{ event.data.location }}</span>
+          <span class="event-card__location">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.6665 6.76167C2.6665 3.76367 5.0545 1.33301 7.99984 1.33301C10.9452 1.33301 13.3332 3.76367 13.3332 6.76167C13.3332 9.73634 11.6312 13.2083 8.97517 14.449C8.66989 14.592 8.33693 14.666 7.99984 14.666C7.66275 14.666 7.32978 14.592 7.0245 14.449C4.3685 13.2077 2.6665 9.73701 2.6665 6.76234V6.76167Z"
+                stroke="#1c112b"
+                stroke-width="1.5"
+              />
+              <path
+                d="M8 8.66602C9.10457 8.66602 10 7.77059 10 6.66602C10 5.56145 9.10457 4.66602 8 4.66602C6.89543 4.66602 6 5.56145 6 6.66602C6 7.77059 6.89543 8.66602 8 8.66602Z"
+                stroke="#1c112b"
+                stroke-width="1.5"
+              />
+            </svg>
+            {{ event.data.location }}</span
+          >
+          <div class="card-date">
+            <p class="month">{{ event.data.datetime | monthshort }}</p>
+            <p class="day">{{ event.data.datetime | daynodot }}</p>
           </div>
-          <div class="card-body">
-            <div class="card-date">
-              <span class="month">{{ event.data.datetime | month }}</span>
-              <span class="day">{{ event.data.datetime | day }}</span>
-            </div>
 
-            <div class="card-content">
-              <h3>{{ event.data.title }}</h3>
-              <p>{{ event.data.description }}</p>
-            </div>
+          <div class="card-content">
+            <h3>{{ event.data.title }}</h3>
+            <p>{{ event.data.description }}</p>
           </div>
         </div>
         {% endif %} {% endfor %}
@@ -552,6 +598,6 @@
 
     <!-- Initialize Swiper -->
     <script src="/static/js/main.js"></script>
-    ¨
+    <script src="/static/js/card-swapper.js"></script>
   </body>
 </html>

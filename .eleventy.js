@@ -40,6 +40,10 @@ module.exports = function (eleventyConfig) {
     });
   });
 
+  eleventyConfig.addFilter("capital", (text) => {
+    return text.toUpperCase();
+  });
+
   eleventyConfig.addFilter("year", (date) => {
     return new Date(date).toLocaleDateString("cs-CZ", { year: "numeric" });
   });
@@ -87,13 +91,13 @@ module.exports = function (eleventyConfig) {
     },
   });
 
-  eleventyConfig.addCollection("dokumenty", col =>
-  col.getFilteredByGlob("src/content/important_documents/*.md")
-);
+  eleventyConfig.addCollection("dokumenty", (col) =>
+    col.getFilteredByGlob("src/content/important_documents/*.md"),
+  );
 
-eleventyConfig.addCollection("tym", col =>
-  col.getFilteredByGlob("src/content/team/*.md")
-);
+  eleventyConfig.addCollection("tym", (col) =>
+    col.getFilteredByGlob("src/content/team/*.md"),
+  );
 
   return {
     dir: {

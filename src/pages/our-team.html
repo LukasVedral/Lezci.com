@@ -81,34 +81,41 @@
 
     <main>
       <h1 class="divider divider--side">Náš tým</h1>
-      <section>
-        {% for member in collections.team%}
-        <div class="member-card swiper-slide">
+      <section class="members">
+        {% for member in collections.team %}
+        <div class="member__card">
+          {%if member.data.photo%}
           <img
             src="{{ member.data.photo }}"
             alt="{{ member.data.name }}"
-            class="member-photo"
+            class="member__photo"
           />
-
+          {%else%}
+          <img
+            src="/static/images/default-user.png"
+            alt="{{ member.data.name }}"
+            class="member__photo"
+          />
+          {%endif%}
+          <span class="role">{{ member.data.role | capital}}</span>
           <div class="member-info">
             <div class="member-name-row">
               <h3>{{ member.data.name }}</h3>
-              <span class="badge">{{ member.data.role }}</span>
             </div>
-
             <a
-              href="tel:{{ member.data.phone | replace(' ', '') }}"
+              href="tel:{{ member.data.tel | replace(' ', '') }}"
               class="member-contact"
             >
-              <i class="ti ti-phone"></i>
-              {{ member.data.phone }}
+              <img src="/static/images/svg/icon--phone.svg" alt="" />
+              {{ member.data.tel }}
             </a>
             <a href="mailto:{{ member.data.email }}" class="member-contact">
-              <i class="ti ti-mail"></i>
+              <img src="/static/images/svg/icon--mail.svg" alt="" />
               {{ member.data.email }}
             </a>
           </div>
         </div>
+
         {% endfor %}
       </section>
     </main>

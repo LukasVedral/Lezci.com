@@ -30,7 +30,7 @@
 :root {
   --swiper-theme-color: var(--color-primary) !important;
   --swiper-navigation-size: 4rem !important;
-  --swiper-navigation-sides-offset: -32px;
+  --swiper-navigation-sides-offset: 0px;
 }
 
 #slider-documents .slide .bg-info {
@@ -58,7 +58,7 @@
   height: 56px;
 }
 #slider-documents .slide .bg-info h3 {
-  font-size: 36px;
+  font-size: 28px;
 }
 
 #slider-documents .bg-info__more {
@@ -120,6 +120,9 @@ section:has(> #slider-team) {
   right: 16px;
   padding: 8px 24px;
   border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 #slider-team + .btn {
   position: absolute;

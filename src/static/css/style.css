@@ -29,7 +29,6 @@
     gap: 80px;
     max-width: 1400px;
     margin-top: 80px;
-    overflow-x: hidden;
   }
   .btn--dark {
     background-color: var(--color-dark);
@@ -538,7 +537,8 @@ footer > section {
   margin-top: 2px;
 }
 .main-news,
-.upcoming-events {
+.upcoming-events,
+.events {
   display: flex;
   flex-direction: column;
   gap: 48px;
@@ -911,24 +911,36 @@ footer > section {
   background-color: var(--color-dark);
   margin-left: -20px;
   margin-right: -20px;
-
-  padding: 40px 20px;
 }
+
 .club__history p,
 .club__history h2 {
   color: var(--color-light);
 }
+.history__container {
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .history__content header {
   display: flex;
   gap: 16px;
   align-items: center;
   font-size: 36px;
   font-weight: 300;
+  justify-content: center;
 }
 .history__content {
   display: flex;
   flex-direction: column;
   gap: 32px;
+}
+
+section:has(> .swiper) {
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 section:has(> .swiper) header {
@@ -945,6 +957,131 @@ section:has(> .swiper) h2 {
 section:has(> .swiper) header img {
   width: 32px;
   height: 32px;
+}
+
+.history__text {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.history__images {
+  position: relative;
+  aspect-ratio: 4/3;
+  width: 70%;
+  cursor: pointer;
+  margin: 32px 0;
+}
+
+.history-card {
+  top: 28px;
+  left: -32px;
+  position: absolute;
+
+  /* Plynulý přechod při změně pozice */
+  transition:
+    transform 0.5s ease,
+    z-index 0.5s ease;
+  inset: 0;
+  background: white;
+  padding: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  display: block;
+}
+
+.history-card img {
+  object-fit: cover;
+  aspect-ratio: 4/3;
+}
+
+/* Obrázek úplně navrchu */
+.history-card.active {
+  z-index: 3;
+  transform: scale(1) translateY(0);
+}
+
+.history-card:nth-child(2) {
+  z-index: 2;
+  transform: translate(10px, 8px) rotate(2deg);
+}
+.history-card:nth-child(n + 3) {
+  z-index: 1;
+  transform: translate(20px, 16px) rotate(4deg);
+}
+.history-card:nth-child(n + 4) {
+  z-index: 0;
+  transition: non;
+}
+
+.upcoming-events header {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  grid-area: header;
+}
+
+.upcoming-events:has(> header) {
+  display: grid;
+  grid-template-areas: "header header" "content1 content2";
+  grid-template-columns: 1fr 1fr;
+}
+
+.upcoming-events .event-card:first-child {
+  grid-area: content1;
+}
+.upcoming-events .event-card:nth-child(2) {
+  grid-area: content2;
+}
+.upcoming-events header img {
+  width: 32px;
+  height: 32px;
+}
+
+.members {
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  position: relative;
+  gap: 64px;
+  justify-content: center;
+}
+.member__card {
+  width: 298px;
+  height: 330px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 25px;
+  background-color: grey;
+}
+
+.member__card img {
+  height: 110%;
+  width: 100%;
+  object-fit: cover;
+}
+.role {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: 2px solid var(--color-secondary);
+  display: block;
+  padding: 2px 12px;
+  padding-top: 4px;
+  color: var(--color-secondary);
+  background-color: color-mix(in srgb, var(--color-secondary) 5%, transparent);
+  border-radius: 15px;
+}
+
+.member-contact {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.member-contact img {
+  height: 24px;
+  width: 24px;
 }
 
 @media screen and (min-width: 600px) {
@@ -1099,6 +1236,7 @@ section:has(> .swiper) header img {
     padding-top: 80px;
     flex-direction: row;
   }
+
   .event-card {
     flex: 1;
   }
@@ -1159,6 +1297,29 @@ section:has(> .swiper) header img {
   .club__info {
     flex-direction: row;
     align-items: center;
+  }
+
+  .club__history {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+  }
+  .history__container {
+    flex-direction: row;
+    padding: 40px 96px;
+    gap: 28px;
+    max-width: 1208px;
+    justify-content: center;
+  }
+  .history__images {
+    flex: 3;
+  }
+  .history__content {
+    flex: 4;
+  }
+  .history__content > header,
+  .upcoming-events header {
+    justify-content: start;
   }
 }
 
