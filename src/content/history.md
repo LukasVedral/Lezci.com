@@ -13,4 +13,9 @@ text: >-
 
 
   Postupem času se oddíl rozrostl do dnešní podoby **čtyř termínů týdně** a počtu kolem **50 dětí**. Skupina vedoucích obsahuje **8 lidí** z řad libereckých studentů a pedagogů. **Pravidelná činnost** je rozšířena o příležitostné akce (*lezecké závody, lezení na skalkách, výlety na sněžnicích a běžkách* apod.). Pořádáme i nárazové akce typu **zajištění lezení pro základní školy** či **nízké lanové překážky**. Tradičními akcemi se stal **letní tábor** a podzimní závod **Harcovský Bloudil**.
+historical_photos:
+  - photo: /static/uploads/obrázek_2026-03-25_220035262.png
+  - photo: /static/uploads/obrázek_2026-05-24_145123349.png
+  - photo: /static/uploads/obrázek_2026-05-24_145548842.png
+  - photo: /static/uploads/sneznice.jpg
 ---
