@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lezci.com - Oddíl</title>
     <meta name="description" content="Nejdůležitější věci ohledně závodu" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
-        <link rel="stylesheet" href="/static/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="/static/css/style.css" />
   </head>
   <body>
     <div class="header">
@@ -81,17 +84,21 @@
 
     <main>
       <section class="about-us">
-          {% for item in collections.all %} {% if item.fileSlug == "about" %}
-        
-          <h2 id="about">O Nás</h2>
-          <div class="about-us--content">
-            <img class="image--responsive" src="{{ item.data['about-image'] }}" alt="Obrázek O Nás" />
-            <div class="about-us__text-box">
-              <p>{{ item.data['about-text'] | markdown | safe }}</p>
-              <a class="btn btn--dark" href="./pages/club.html">Více o oddílu</a>
-            </div>
+        {% for item in collections.all %} {% if item.fileSlug == "about" %}
+
+        <h2 id="about">O Nás</h2>
+        <div class="about-us--content">
+          <img
+            class="image--responsive"
+            src="{{ item.data['about-image'] }}"
+            alt="Obrázek O Nás"
+          />
+          <div class="about-us__text-box">
+            <p>{{ item.data['about-text'] | markdown | safe }}</p>
+            <a class="btn btn--dark" href="./pages/club.html">Více o oddílu</a>
           </div>
-          {% endif %} {% endfor %}
+        </div>
+        {% endif %} {% endfor %}
       </section>
       <section class="club__info">
         <div class="info__content">
@@ -177,8 +184,6 @@
         </div>
       </section>
 
-
-
       <section>
         <header>
           <img src="/static/images/svg/icon--pdf.svg" alt="ikona pdf" />
@@ -189,45 +194,46 @@
           <div class="swiper-wrapper wrapper-inner">
             {% for item in collections.important_documents %}
 
-              <div class="swiper-slide slide">
-                <div class="bg-info">
-                  <img src="/static/images/svg/icon--pdf.svg" alt="ikona pdf" />
-                  <h3>{{item.data.title}}</h3>
-                  <div class="bg-info__more">
-                    <p>{{item.data.description}}</p>
-                    <a href="{{ item.data.file }}" download>
-                      <img src="/static/images/svg/icon--download.svg" alt="ikona stahování" />
-                      Stáhnout
-                    </a>
-                  </div>
-
+            <div class="swiper-slide slide">
+              <div class="bg-info">
+                <img src="/static/images/svg/icon--pdf.svg" alt="ikona pdf" />
+                <h3>{{item.data.title}}</h3>
+                <div class="bg-info__more">
+                  <p>{{item.data.description}}</p>
+                  <a href="{{ item.data.file }}" download>
+                    <img
+                      src="/static/images/svg/icon--download.svg"
+                      alt="ikona stahování"
+                    />
+                    Stáhnout
+                  </a>
                 </div>
-
               </div>
+            </div>
 
-              {%endfor%}
+            {%endfor%}
           </div>
 
-            <!-- If we need pagination -->
-            <div class="swiper-pagination"></div>
-            
-            <!-- If we need navigation buttons -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+          <!-- If we need pagination -->
+          <div class="swiper-pagination"></div>
+
+          <!-- If we need navigation buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
         </div>
       </section>
 
       <script>
-        document.querySelectorAll('#slider-documents .bg-info').forEach(card => {
-            card.addEventListener('click', () => {
-              card.classList.toggle('is-open');
+        document
+          .querySelectorAll("#slider-documents .bg-info")
+          .forEach((card) => {
+            card.addEventListener("click", () => {
+              card.classList.toggle("is-open");
             });
           });
       </script>
 
-
       <section>
-
         <header>
           <img src="/static/images/svg/icon--team.svg" alt="ikona týmu" />
           <h2>Náš tým</h2>
@@ -235,15 +241,21 @@
 
         <div class="swiper wrapper teamSwiper" id="slider-team">
           <div class="swiper-wrapper wrapper-inner">
-
-  
             {% for member in collections.team %}
             <div class="member-card swiper-slide slide">
               <div class="slide-wrapper">
                 {%if member.data.photo%}
-                  <img src="{{ member.data.photo }}" alt="{{ member.data.name }}" class="member-photo" />
+                <img
+                  src="{{ member.data.photo }}"
+                  alt="{{ member.data.name }}"
+                  class="member-photo"
+                />
                 {%else%}
-                  <img src="/static/images/default-user.png" alt="{{ member.data.name }}" class="member-photo" />
+                <img
+                  src="/static/images/default-user.png"
+                  alt="{{ member.data.name }}"
+                  class="member-photo"
+                />
                 {%endif%}
 
                 <div class="member-info">
@@ -251,11 +263,17 @@
                     <h3>{{ member.data.name }}</h3>
                     <span class="role">{{ member.data.role }}</span>
                   </div>
-                  <a href="tel:{{ member.data.phone | replace(' ', '') }}" class="member-contact">
+                  <a
+                    href="tel:{{ member.data.phone | replace(' ', '') }}"
+                    class="member-contact"
+                  >
                     <i class="ti ti-phone"></i>
                     {{ member.data.phone }}
                   </a>
-                  <a href="mailto:{{ member.data.email }}" class="member-contact">
+                  <a
+                    href="mailto:{{ member.data.email }}"
+                    class="member-contact"
+                  >
                     <i class="ti ti-mail"></i>
                     {{ member.data.email }}
                   </a>
@@ -263,7 +281,6 @@
               </div>
             </div>
             {% endfor %}
-
           </div>
           <!-- If you need pagination dots -->
           <div class="swiper-pagination"></div>
@@ -289,21 +306,11 @@
           <p>{{ item.data.text | markdown | safe }}</p>
         </div>
         <div class="history__images">
-          <img
-            class="image--responsive"
-            src="/static/uploads/obrázek_2026-03-15_150800146.png"
-            alt=""
-          />
-          <img
-            class="image--responsive"
-            src="/static/uploads/obrázek_2026-05-24_145548842.png"
-            alt=""
-          />
-          <img
-            class="image--responsive"
-            src="/static/uploads/obrázek_2026-03-25_220035262.png"
-            alt=""
-          />
+          {%for photo in item.data.historical_photos%}
+          <a href="{{photo.photo}}">
+            <img src="{{photo.photo}}" alt="" />
+          </a>
+          {%endfor%}
         </div>
         {% endif %}{% endfor %}
       </section>
@@ -544,7 +551,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 
     <!-- Initialize Swiper -->
-     <script src="/static/js/main.js"></script>¨
-
+    <script src="/static/js/main.js"></script>
+    ¨
   </body>
 </html>
