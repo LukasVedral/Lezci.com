@@ -1084,6 +1084,9 @@ section:has(> .swiper) header img {
   width: 24px;
 }
 
+
+
+
 @media screen and (min-width: 600px) {
   .sponsors__logo {
     width: 25%;

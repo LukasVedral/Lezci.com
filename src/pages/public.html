@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lezci.com - Pro veřejnost</title>
     <meta name="description" content="Nejdůležitější věci ohledně závodu" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/static/css/style.css" />
+
   </head>
   <body>
     <div class="header">
@@ -81,7 +83,36 @@
     <main>
       <section class="usefull-vids">
         <h2 class="divider--side">Užitečná videa</h2>
-        <!--swiper-->
+        
+        <div class="swiper wrapper" id="slider-videos">
+          <div class="swiper-wrapper wrapper-inner">
+            {% for video in collections.useful_videos %}
+            <div class="videos__card swiper-slide slide">
+              <div class="slide-wrapper">
+                <div class="video__thumbnail">
+                  <svg width="96" height="77" viewBox="0 0 96 77" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M47.6736 0C51.7496 0 55.9306 0.104815 59.9829 0.27633L64.7693 0.505016L69.3507 0.776582L73.6413 1.0672L77.5601 1.37212C81.8135 1.69558 85.8162 3.5086 88.8633 6.49185C91.9104 9.47511 93.8064 13.4372 94.2173 17.6803L94.4079 19.7052L94.7655 24.0407C95.0992 28.5334 95.3471 33.4311 95.3471 38.1144C95.3471 42.7978 95.0992 47.6955 94.7655 52.1882L94.4079 56.5237L94.2173 58.5486C93.8062 62.7924 91.9095 66.7551 88.8615 69.7385C85.8134 72.7218 81.8096 74.5344 77.5553 74.8568L73.6461 75.1569L69.3555 75.4523L64.7693 75.7239L59.9829 75.9526C55.8821 76.1301 51.7781 76.2222 47.6736 76.2289C43.569 76.2222 39.465 76.1301 35.3642 75.9526L30.5778 75.7239L25.9964 75.4523L21.7058 75.1569L17.787 74.8568C13.5336 74.5333 9.5309 72.7203 6.48381 69.737C3.43673 66.7538 1.54077 62.7917 1.12986 58.5486L0.939169 56.5237L0.581617 52.1882C0.218501 47.5055 0.0245025 42.8112 0 38.1144C0 33.4311 0.247902 28.5334 0.581617 24.0407L0.939169 19.7052L1.12986 17.6803C1.54061 13.438 3.43589 9.47645 6.482 6.4933C9.52811 3.51014 13.5297 1.69665 17.7822 1.37212L21.6962 1.0672L25.9869 0.776582L30.5731 0.505016L35.3595 0.27633C39.4618 0.0987507 43.5674 0.00662039 47.6736 0ZM38.1388 26.561V49.6679C38.1388 51.869 40.5225 53.2411 42.4295 52.1453L62.4524 40.5919C62.8881 40.3412 63.25 39.9803 63.5016 39.5453C63.7533 39.1104 63.8857 38.6169 63.8857 38.1144C63.8857 37.612 63.7533 37.1185 63.5016 36.6836C63.25 36.2486 62.8881 35.8877 62.4524 35.637L42.4295 24.0883C41.9945 23.8374 41.5011 23.7053 40.9988 23.7054C40.4965 23.7054 40.0032 23.8377 39.5683 24.0888C39.1334 24.3399 38.7723 24.701 38.5214 25.1358C38.2705 25.5707 38.1385 26.0638 38.1388 26.5658V26.561Z"
+                    fill="#FF0000" />
+                  </svg>
+                  <div class="video__overlay"></div>
+                  <img class="image--responsive" src="https://img.youtube.com/vi/{{video.data.url}}/hqdefault.jpg" alt="nahled videa">
+                </div>
+              
+                <h4>{{video.data.title}}</h4>
+                <p>{{video.data.author}}</p>
+              
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <!-- If you need pagination dots -->
+          <div class="swiper-pagination"></div>
+        
+          <!-- If you need navigation buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
       </section>
 
       <section class="offered-events">
@@ -351,8 +382,7 @@
     </footer>
 
     <script type="module" src="/static/js/hamburger.js"></script>
-    <!-- Swiper JS -->
-    <script type="module" src="/src/static/js/main.js"></script>
+
     <script>
       document.querySelector(".swiper").style.overflow = "visible";
     </script>
@@ -366,5 +396,9 @@
         showMoreButton.classList.toggle("hidden");
       }
     </script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="/static/js/main.js"></script>
   </body>
 </html>

@@ -236,7 +236,12 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Název videa", name: "title", widget: "string" }
-      - { label: "URL videa", name: "url", widget: "string" }
+      - {
+          label: "URL videa",
+          name: "url",
+          widget: "string",
+          hint: "Zadejte pouze ID videa z YouTube (např. pro https://youtu.be/bVJVHvGWjuw zadejte bVJVHvGWjuw)",
+        }
       - { label: "Autor", name: "author", widget: "string" }
 
   - name: "important_documents"

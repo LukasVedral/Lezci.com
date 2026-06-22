@@ -142,3 +142,65 @@ section:has(> #slider-team) {
     padding: 0 24px !important;
   }
 }
+
+
+#slider-videos{
+  height: 500px;
+}
+
+.videos__card {
+  width: 320px;
+}
+
+.slide-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.video__thumbnail {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  aspect-ratio: 16 / 9;
+}
+
+.video__thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* tmavý nádech přes thumbnail */
+.video__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 20, 40, 0.25);
+  pointer-events: none;
+}
+
+/* play tlačítko vpravo nahoře */
+.video__thumbnail svg {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 56px;
+  height: auto;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+  z-index: 2;
+}
+
+.videos__card h4 {
+  margin: 16px 0 4px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1430;
+  /* tmavě fialová jako na obrázku */
+}
+
+.videos__card p {
+  margin: 0;
+  font-size: 1rem;
+  color: #6b6b6b;
+}

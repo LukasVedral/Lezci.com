@@ -1,5 +1,5 @@
 ---
 title: Vázání uzlů
-url: https://www.youtube.com/watch?v=WHDBjypULAs
+url: WHDBjypULAs
 author: lezeckametodika
 ---
