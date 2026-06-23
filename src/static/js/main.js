@@ -48,10 +48,11 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 
-    const swiperDocuments = new Swiper('#slider-videos', {
+    const swiperVideos = new Swiper('#slider-videos', {
       slidesPerView: 1,
       spaceBetween: 32,
       watchOverflow: false,
+      grabCursor: true,
       loop: false,
       breakpoints: {
           600: {

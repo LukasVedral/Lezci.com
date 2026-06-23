@@ -1073,6 +1073,11 @@ section:has(> .swiper) header img {
   background-color: color-mix(in srgb, var(--color-secondary) 5%, transparent);
   border-radius: 15px;
 }
+.offers__cards{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .member-contact {
   display: flex;
@@ -1083,9 +1088,237 @@ section:has(> .swiper) header img {
   height: 24px;
   width: 24px;
 }
+.service-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  padding: 2rem 1.75rem 1.75rem;
+  display: flex;
+  width: 360px;
+  flex-direction: column;
+  gap: 0.75rem;
+  color: #fff;
 
+  background-size: cover;
+  background-position: center;
 
+}
 
+/* Tmavý overlay přes background image */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(20, 15, 45, 0.72) 0%,
+    rgba(20, 15, 45, 0.55) 100%
+  );
+  z-index: 0;
+}
+
+/* Ikona v pravém horním rohu */
+.card-icon {
+  position: absolute;
+  top: 0;
+  right: -8px;
+  width: 128px;
+  height: 128px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  z-index: 2;
+}
+
+.card-icon--slackline {
+  width: 80px;
+  height: 80px;
+  top: auto;
+  right: auto;
+  bottom: 12px;
+  left: 12px;
+}
+
+/* Hlavička */
+.card-header {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+}
+
+.card-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.2rem;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.card-sub {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+}
+
+/* Popis */
+.card-desc + p {
+  position: relative;
+  z-index: 2;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0;
+}
+
+.card-desc strong,
+.card-desc b {
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Tlačítko "Chci vědět více" */
+.btn-more {
+  position: relative;
+  z-index: 2;
+  align-self: flex-end;
+  margin-top: auto;
+  padding: 0.55rem 1.4rem;
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-more:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+}
+
+/* Rozbalený obsah */
+.card-details {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+}
+
+.card-details.hidden {
+  display: none;
+}
+
+.btn-less {
+  align-self: flex-end;
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.55rem 1.4rem;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-less:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+}
+
+.detail-item {
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+}
+
+.detail-item h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 0.4rem;
+  color: #fff;
+}
+
+.detail-item p {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.btn--secondary{
+  color: var(--color-secondary);
+  border: 2px solid var(--color-secondary);
+  padding: 16px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+
+}
+.btn--secondary:hover{
+  color: var(--color-light);
+  background-color: var(--color-secondary);
+}
+
+.offers{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.offers .btn{
+  margin-top: 32px;
+}
+
+.gallery-header{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.gallery-header h2{
+  font-weight: 600;
+  font-size: 28px;
+    transition: all .3s ease;
+
+}
+.gallery-card{
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap:16px;
+}
+
+.gallery-card:hover h2{
+  color: var(--color-secondary);
+}
+
+.gallery-card hr{
+  width: 100%;
+}
+.gallery-card span{
+  font-weight: bold;
+  font-size: 2rem;
+}
+.gallery{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap:64px ;
+  justify-content: center;
+  align-items: end;
+
+}
+.gallery img{
+  aspect-ratio: 4/3;
+  transition: transform .3s ease;
+  object-fit: cover;
+  object-position: top;
+}
+.gallery-card:hover img{
+  transform: scale(1.02);
+}
 
 @media screen and (min-width: 600px) {
   .sponsors__logo {
@@ -1151,47 +1384,6 @@ section:has(> .swiper) header img {
     align-self: flex-start;
     font-weight: 600;
     letter-spacing: 1px;
-  }
-  .about-us--content {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch; /* Boxy budou stejně vysoké */
-    position: relative;
-    padding: 0;
-  }
-
-  /* Obrázek: zabere 40% šířky, float už nepotřebuješ */
-  .about-us img {
-    width: 40%;
-    height: auto;
-    object-fit: cover; /* Zajistí, že se obrázek nedeformuje */
-    z-index: 2;
-    position: relative;
-    margin-bottom: 40px;
-  }
-
-  /* Šedivý rámeček: flexibilní šířka, která reaguje na zmenšování prohlížeče */
-  .about-us__text-box {
-    background-color: #f5f5f5;
-    border: 1px solid #333;
-    height: auto;
-
-    margin-left: -7%;
-    margin-top: 80px;
-    padding: 40px 120px;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .about-us .btn--dark {
-    position: relative;
-    align-self: end;
-  }
-
-  .about-us h2 {
-    font-size: 2.5rem;
-    margin-left: calc(40% - 5% + 80px);
   }
   .main__why-us {
     width: 100%;
@@ -1324,7 +1516,59 @@ section:has(> .swiper) header img {
   .upcoming-events header {
     justify-content: start;
   }
+
+  .offers__container{
+    display: flex;
+    flex-direction: row;
+    gap: 64px;
+  }
 }
+
+@media screen and (min-width: 1200px) {
+    .about-us--content {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch; /* Boxy budou stejně vysoké */
+    position: relative;
+    padding: 0;
+  }
+
+  /* Obrázek: zabere 40% šířky, float už nepotřebuješ */
+  .about-us img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover; /* Zajistí, že se obrázek nedeformuje */
+    z-index: 2;
+    position: relative;
+    margin-bottom: 40px;
+  }
+
+  /* Šedivý rámeček: flexibilní šířka, která reaguje na zmenšování prohlížeče */
+  .about-us__text-box {
+    background-color: #f5f5f5;
+    border: 1px solid #333;
+    height: auto;
+
+    margin-left: -7%;
+    margin-top: 80px;
+    padding: 40px 120px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .about-us .btn--dark {
+    position: relative;
+    align-self: end;
+  }
+
+  .about-us h2 {
+    font-size: 2.5rem;
+    margin-left: calc(40% - 5% + 80px);
+  }
+
+}
+
 
 .article {
   max-width: 800px;
