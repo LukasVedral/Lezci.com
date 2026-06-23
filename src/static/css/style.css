@@ -870,6 +870,10 @@ footer > section {
   bottom: 0;
   left: 0;
 }
+.service-card.active .card-icon--slackline{
+  bottom: auto;
+  top:190px;
+}
 .hidden {
   display: none;
 }
