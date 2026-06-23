@@ -83,44 +83,50 @@
       {% for item in collections.all %} {% if item.fileSlug == "contact" and
       item.url == "/content/contact/" %}
       <section class="contact-info">
-        <div class="contact-info__container">
-          <h2>Název spolku</h2>
-          <p>{{ item.data.name }}</p>
+        <div class="contact-info-part">
+          <a href="/index.html" class="contact-info__container">
+            <h2>Název spolku</h2>
+            <p>{{ item.data.club_name }}</p>
+          </a>
+          <a
+            class="contact-info__container"
+            href="https://maps.app.goo.gl/UQCKDdeGpqyAL4FD8"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h2>Adresa sídla</h2>
+            <p>{{ item.data.address }}</p>
+          </a>
+          <a href="https://rejstrik-firem.kurzy.cz/05627231/lezci-com-z-s/" class="contact-info__container">
+            <h2>IČO</h2>
+            <p>{{ item.data.ico }}</p>
+          </a>
+
         </div>
-        <a
-          class="contact-info__container"
-          href="https://maps.app.goo.gl/UQCKDdeGpqyAL4FD8"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>Adresa sídla</h2>
-          <p>{{ item.data.address }}</p>
-        </a>
-        <div class="contact-info__container">
-          <h2>IČO</h2>
-          <p>{{ item.data.ico }}</p>
+        <div class="contact-info-part">
+
+          <a href="https://ktv.fp.tul.cz/katedra/lide/40-kupr-jaroslav" class="contact-info__container">
+            <h2>Ředitel spolku</h2>
+            <p>{{ item.data.director }}</p>
+          </a>
+          <div class="contact-info__container">
+            <h2>Email</h2>
+            <ul>
+              {% for email in item.data.emails %}
+              <li>
+                <a href="mailto:{{ email }}">{{ email.email_address }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <a class="contact-info__container" href="tel:+420737383808">
+            <h2>Telefon</h2>
+            <p>+420 737 383 808</p>
+          </a>
         </div>
-        <div class="contact-info__container">
-          <h2>Ředitel spolku</h2>
-          <p>{{ item.data.director }}</p>
-        </div>
-        <div class="contact-info__container">
-          <h2>Email</h2>
-          <ul>
-            {% for email in item.data.emails %}
-            <li>
-              <a href="mailto:{{ email }}">{{ email }}</a>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-        <a class="contact-info__container" href="tel:+420737383808">
-          <h2>Telefon</h2>
-          <p>+420 737 383 808</p>
-        </a>
-        <a href="../index.html">
+        <a href="/index.html">
           <img
-            src="/static/img/logo.png"
+            src="/static/images/logo.png"
             alt="Lezci.com background image"
             class="contact__bg"
           />
@@ -135,21 +141,7 @@
           class="contact-socials__item"
         >
           <img
-            src="/static/img/logo.png"
-            alt="Lezci.com background image"
-            class="contact__bg"
-          />
-        </a>
-      </section>
-      <section class="contact-socials">
-        <a
-          href="https://www.facebook.com/lezci.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="contact-socials__item"
-        >
-          <img
-            src="../static/images/svg/icon--facebook.svg"
+            src="/static/images/svg/icon--facebook.svg"
             alt="Facebook"
             class="contact-socials__icon"
           />
@@ -162,7 +154,7 @@
           class="contact-socials__item"
         >
           <img
-            src="../static/images/svg/icon--instagram.svg"
+            src="/static/images/svg/icon--instagram.svg"
             alt="Instagram"
             class="contact-socials__icon"
           />
@@ -175,7 +167,7 @@
           class="contact-socials__item"
         >
           <img
-            src="../static/images/svg/icon--youtube.svg"
+            src="/static/images/svg/icon--youtube.svg"
             alt="YouTube"
             class="contact-socials__icon"
           />

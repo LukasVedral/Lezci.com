@@ -1320,6 +1320,47 @@ section:has(> .swiper) header img {
   transform: scale(1.02);
 }
 
+.contact-info, .contact-info-part{
+display: flex;
+flex-direction: column;
+ gap:40px;
+}
+.contact-info{
+
+}
+.contact-info li a {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.contact-info__container{
+  display: flex;
+  flex-direction: column;
+  gap:12px;
+  border-left: 4px solid var(--color-secondary);
+  padding-left: 12px ;
+  transition: all .3s ease;
+}
+.contact-info__container:hover{
+  border-left-width: 8px;
+}
+
+.contact-info > a{
+  align-self: center;
+  margin-top: 40px;
+}
+
+.contact-socials{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 48px;
+}
+.contact-socials__item{
+  display: flex;
+  align-items: center;
+}
+
 @media screen and (min-width: 600px) {
   .sponsors__logo {
     width: 25%;
@@ -1522,6 +1563,13 @@ section:has(> .swiper) header img {
     flex-direction: row;
     gap: 64px;
   }
+
+    .contact-info{
+    align-self: stretch;
+    justify-content: space-between;
+      flex-direction: row;
+  flex-wrap: wrap;
+  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -1566,6 +1614,8 @@ section:has(> .swiper) header img {
     font-size: 2.5rem;
     margin-left: calc(40% - 5% + 80px);
   }
+
+
 
 }
 
