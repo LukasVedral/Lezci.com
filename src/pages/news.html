@@ -77,10 +77,18 @@
         </nav>
       </header>
     </div>
+
+    <script>
+      let n = 0
+    </script>
     <main class="news-site">
       <h1 class="divider--side">Aktuality</h1>
       <div class="news">
         {% for item in collections.aktuality | reverse %}
+        <script>
+          n++
+          console.log(n)
+        </script>
         <a href="{{item.url}}" class="article-card" id="{{item.data.title}}">
           {%if item.data.thumbnail%}
           <img
