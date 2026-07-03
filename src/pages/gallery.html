@@ -6,7 +6,6 @@
     <title>Lezci.com - Galerie</title>
     <meta name="description" content="Nejdůležitější věci ohledně závodu" />
     <link rel="stylesheet" href="/static/css/style.css" />
-    <link rel="preload" as="image" href="/static/img/index-bg.avif" />
   </head>
   <body>
     <div class="header">
@@ -91,7 +90,9 @@
           </div>
           <hr />
           <img loading="lazy" src="{{ item.data.photo }}" alt="{{ item.data.title }}" />
-          <p class="gallery-caption">Fotografie od: {{ item.author }}</p>
+          {% if item.data.photographer %}
+          <p class="gallery-caption">Fotografie od: {{ item.data.photographer }}</p>
+           {% endif %}
         </a>
         {% endfor %}
       </section>

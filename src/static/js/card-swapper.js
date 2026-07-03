@@ -27,7 +27,7 @@ function stopSwapping() {
 
 function startSwapping() {
   if (isHovering) return;
-  intervalId = setInterval(SwapCards, 3000);
+  intervalId = setInterval(SwapCards, 2000);
 }
 
 startSwapping();

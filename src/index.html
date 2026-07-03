@@ -86,6 +86,7 @@
             src="{{ item.image }}"
             alt="Obrázek Lezce"
             style="display: none"
+            fetchpriority=high
           />
           {% endfor %}
 
@@ -102,7 +103,7 @@
                       <div class="hero__content">
             <p class="hero__text--big">Tvůj cíl je nahoře,</p>
             <p class="hero__text--small">my ti pomůžeme ho dosáhnout.</p>
-            <a class="btn hero__btn" href="./pages/contact.html"
+            <a class="btn hero__btn" href="./pages/contact/"
               >Kontaktuj nás</a
             >
           </div>
@@ -135,7 +136,7 @@
           />
           <div class="about-us__text-box">
             <p>{{ item.data['about-text'] | markdown | safe }}</p>
-            <a class="btn btn--dark" href="./pages/club.html">Více o oddílu</a>
+            <a class="btn btn--dark" href="./pages/club/">Více o oddílu</a>
           </div>
         </div>
         {% endif %} {% endfor %}
@@ -209,12 +210,12 @@
           3 %}
 
           <a href="{{item.url}}" class="article__card">
-            <img
-              src="{{ item.data.thumbnail }}"
-              alt="{{ item.data.title }}"
-              class="card--img image--responsive"
-            />
-
+          {% set thumb = item.data.thumbnail %}
+          {% if thumb and not (thumb.endsWith('.png') or thumb.endsWith('.svg')) %}
+            <img src="{{ thumb }}" alt="{{ item.data.title }}" class="card--img image--responsive" />
+          {% else %}
+            <img src="/static/images/aktuality-placeholder.jpg" alt="Placeholder" class="card--img image--responsive" />
+          {% endif %} 
             <div class="card-overlay"></div>
 
             <div class="card__body">
