@@ -90,7 +90,7 @@
             <span>→</span>
           </div>
           <hr />
-          <img src="{{ item.data.photo }}" alt="{{ item.data.title }}" />
+          <img loading="lazy" src="{{ item.data.photo }}" alt="{{ item.data.title }}" />
           <p class="gallery-caption">Fotografie od: {{ item.author }}</p>
         </a>
         {% endfor %}
