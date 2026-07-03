@@ -82,8 +82,8 @@
     <main>
       <h1 class="divider divider--side">Galerie</h1>
 
-      <section>
-        {% for item in collections.gallery %}
+      <section class="gallery">
+        {% for item in collections.gallery | reverse %}
         <a href="{{ item.data.gallery_url }}" class="gallery-card">
           <div class="gallery-header">
             <h2>{{ item.data.title }}</h2>

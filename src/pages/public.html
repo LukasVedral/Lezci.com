@@ -180,7 +180,7 @@
             </div>
           </div>
           <!--kontaktujte nás href-->
-          <a href="">Kontaktujte nás</a>
+          <a href="/pages/contact/" class="btn btn--secondary" href="">Kontaktujte nás</a>
           {% endif %}{% endfor %}
         </div>
       </section>
@@ -383,9 +383,6 @@
 
     <script type="module" src="/static/js/hamburger.js"></script>
 
-    <script>
-      document.querySelector(".swiper").style.overflow = "visible";
-    </script>
 
     <script>
       function toggleCard(button) {
@@ -394,6 +391,7 @@
         details.classList.toggle("hidden");
         const showMoreButton = card.querySelector(".btn-more");
         showMoreButton.classList.toggle("hidden");
+        card.classList.toggle("active")
       }
     </script>
 

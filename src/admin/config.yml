@@ -279,6 +279,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Název akce", name: "title", widget: "string" }
+      - { label: "datum", name: "date", widget: "datetime"}
       - { label: "Náhledová fotka", name: "photo", widget: "image" }
       - { label: "odkaz na galerii", name: "gallery_url", widget: "string" }
       - {

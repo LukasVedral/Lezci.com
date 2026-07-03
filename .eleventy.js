@@ -76,6 +76,12 @@ module.exports = function (eleventyConfig) {
     return content.replace(/<a\b[^>]*>(.*?)<\/a>/gi, "$1");
   });
 
+  eleventyConfig.addFilter("rajceAuthor", (url) => {
+    if (!url) return "";
+    const match = url.match(/rajce\.idnes\.cz\/([^/]+)/);
+    return match ? match[1] : "";
+  });
+
   eleventyConfig.addCollection("upcoming_events", function (collectionApi) {
     const now = new Date();
     return collectionApi
