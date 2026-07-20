@@ -1,6 +1,12 @@
 ---
 title: HO Větrník - Advent v DDM
+<<<<<<< HEAD
 date: 2014-12-06T12:36:00.000+01:00
 photo: /static/uploads/obrázek_2026-07-03_123702226.png
 gallery_url: https://www.rajce.idnes.cz/hovetrnik/album/ho-vetrnik-advent-v-ddm
+=======
+photo: photos/ho-větrník-advent-v-ddm.jpg
+gallery_url: https://www.rajce.idnes.cz/hovetrnik/album/ho-vetrnik-advent-v-ddm
+date: 2014-01-01T00:00:00.000+02:00
+>>>>>>> 656d158 (.)
 ---
