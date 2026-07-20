@@ -115,6 +115,62 @@
         </div>
       </section>
 
+      <section class="usefull-vids">
+        <header>
+          <img src="/static/images/svg/icon--pdf.svg" alt="ikona pdf" />
+          <h2>Duležité dokumenty</h2>
+        </header>
+
+        <div class="swiper wrapper" id="slider-documents">
+          <div class="swiper-wrapper wrapper-inner">
+            {% for item in collections.important_documents %}
+
+            <div class="swiper-slide slide">
+              <div class="bg-info">
+                <img src="/static/images/svg/icon--pdf.svg" alt="ikona pdf" />
+                <h3>{{item.data.title}}</h3>
+                <div class="bg-info__more">
+                  <p>{{item.data.description}}</p>
+                  {% if item.data.book_url %}
+                    <a href="{{ item.data.book_url }}" target="_blank">
+                      Prohlédnout knihu
+                    </a>
+                  {% else %}
+                  <a href="{{ item.data.file }}" download>
+                    <img
+                      src="/static/images/svg/icon--download.svg"
+                      alt="ikona stahování"
+                    />
+                    Stáhnout
+                  </a>
+                  {% endif %}
+
+                </div>
+              </div>
+            </div>
+
+            {%endfor%}
+          </div>
+
+          <!-- If we need pagination -->
+          <div class="swiper-pagination"></div>
+
+          <!-- If we need navigation buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </section>
+
+      <script>
+        document
+          .querySelectorAll("#slider-documents .bg-info")
+          .forEach((card) => {
+            card.addEventListener("click", () => {
+              card.classList.toggle("is-open");
+            });
+          });
+      </script>
+
       <section class="offered-events">
         <h2 class="divider--side">Nabízené akce</h2>
         <div class="offers">

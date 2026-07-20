@@ -118,7 +118,7 @@ section:has(> #slider-team) {
   bottom: 16px;
   left: 16px;
   right: 16px;
-  padding: 8px 24px;
+  padding: 8px 12px;
   border-radius: 15px;
   display: flex;
   flex-direction: column;

@@ -253,6 +253,7 @@ collections:
       - { label: "Nadpis", name: "title", widget: "string" }
       - { label: "Popis", name: "description", widget: "text", required: false }
       - { label: "Soubor", name: "file", widget: "file" }
+      - { label: "Odkaz na knihu", name: "book_url", widget: "string", required: false, hint: "Pouze pokud se jedná o knihu!" }
 
   - name: "team"
     label: "Tým"
@@ -265,6 +266,7 @@ collections:
       - { label: "Fotka", name: "photo", widget: "image", required: false }
       - { label: "Telefon", name: "tel", widget: "string", required: false }
       - { label: "E-mail", name: "email", widget: "string", required: false }
+      - { label: "Osvědčení", name: "certification", widget: "string", required: false }
       - {
           label: "Číslo skupiny",
           name: "group-num",

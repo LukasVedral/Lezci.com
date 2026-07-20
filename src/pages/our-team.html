@@ -111,8 +111,14 @@
             </a>
             <a href="mailto:{{ member.data.email }}" class="member-contact">
               <img src="/static/images/svg/icon--mail.svg" alt="" />
-              <span style="word-break: break-word;"></span>{{ member.data.email }}
+              <span>{{ member.data.email }}</span>
             </a>
+            {% if member.data.certification %}
+              <div class="member-contact">
+                <img src="/static/images/svg/icon--certification.svg" alt="" />
+                <span>{{ member.data.certification }}</span>
+              </div>
+            {% endif %}
           </div>
         </div>
 

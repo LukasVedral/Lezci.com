@@ -78,6 +78,9 @@
       </header>
     </div>
 
+
+
+
     <main>
       <h1 class="divider divider--side">Kontakt</h1>
       {% for item in collections.all %} {% if item.fileSlug == "contact" and
@@ -124,13 +127,28 @@
             <p>+420 737 383 808</p>
           </a>
         </div>
-        <a href="/index.html">
-          <img
-            src="/static/images/logo.png"
-            alt="Lezci.com background image"
-            class="contact__bg"
-          />
-        </a>
+
+        <div class="contact-info-part">
+          <a class="contact-info__container">
+            <h2>Datová schránka</h2>
+            <p>anhyv8e</p>
+          </a>
+
+          <a class="contact-info__container">
+            <h2>Číslo účtu</h2>
+            <p>2201183973 / 2010</p>
+          </a>
+
+          <a href="/index.html">
+            <img
+              src="/static/images/logo.png"
+              alt="Lezci.com background image"
+              class="contact__bg"
+            />
+          </a>
+
+        </div>
+
       </section>
       {% endif %} {% endfor %}
       <section class="contact-socials">
