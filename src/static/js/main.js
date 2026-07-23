@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 
-  const swiperDocuments = new Swiper('#slider-club-documents', {
+  const swiperClubDocuments = new Swiper('#slider-club-documents', {
       slidesPerView: 1,
       spaceBetween: 32,
       watchOverflow: false,
