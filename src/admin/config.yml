@@ -255,6 +255,18 @@ collections:
       - { label: "Soubor", name: "file", widget: "file" }
       - { label: "Odkaz na knihu", name: "book_url", widget: "string", required: false, hint: "Pouze pokud se jedná o knihu!" }
 
+  - name: "club_documents"
+    label: "Oddílové dokumenty"
+    folder: "src/content/club_documents"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nadpis", name: "title", widget: "string" }
+      - { label: "Popis", name: "description", widget: "text", required: false }
+      - { label: "Soubor", name: "file", widget: "file" }
+      - { label: "Odkaz na knihu", name: "book_url", widget: "string", required: false, hint: "Pouze pokud se jedná o knihu!" }
+
+
   - name: "team"
     label: "Tým"
     folder: "src/content/team"

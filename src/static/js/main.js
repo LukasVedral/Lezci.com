@@ -74,5 +74,37 @@ document.addEventListener('DOMContentLoaded', function () {
       nextEl: '#slider-videos .swiper-button-next',
       prevEl: '#slider-videos .swiper-button-prev',
       },
+      
   });
+
+
+  const swiperDocuments = new Swiper('#slider-club-documents', {
+      slidesPerView: 1,
+      spaceBetween: 32,
+      watchOverflow: false,
+      loop: false,
+      breakpoints: {
+          600: {
+          slidesPerView: 2,
+          spaceBetween: 48,
+          },
+          960: {
+          slidesPerView: 3,
+          spaceBetween: 64,
+          },
+      },
+
+
+      pagination: {
+      el: '#slider-club-documents .swiper-pagination',
+      clickable: true,
+      },
+      navigation: {
+      nextEl: '#slider-club-documents .swiper-button-next',
+      prevEl: '#slider-club-documents .swiper-button-prev',
+      },
+  });
+
 });
+
+
