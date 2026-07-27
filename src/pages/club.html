@@ -183,6 +183,7 @@
         </div>
       </section>
 
+      {%if collections.club_documents and collections.club_documents.length > 0%}
       <section class="usefull-vids">
         <header>
           <img src="/static/images/svg/icon--pdf.svg" alt="ikona pdf" />
@@ -226,7 +227,10 @@
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
         </div>
+
+        <a style="z-index: 100;" class="btn btn--dark" href="/pages/club-documents/">Všechny dokumenty</a>
       </section>
+      {%endif%}
       <section>
         <header>
           <img src="/static/images/svg/icon--team.svg" alt="ikona týmu" />
