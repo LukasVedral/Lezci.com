@@ -39,7 +39,7 @@ module.exports = function (eleventyConfig) {
       year: "numeric",
     });
   });
-
+eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addFilter("capital", (text) => {
     return text.toUpperCase();
   });
