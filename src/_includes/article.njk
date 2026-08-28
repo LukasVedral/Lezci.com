@@ -78,63 +78,6 @@
 
 
 
-<article class="article">
-
-  <header class="article__header">
-    {% if thumbnail %}
-      <img class="article__thumbnail" src="{{ thumbnail }}" alt="{{ title }}">
-    {% endif %}
-
-    <div class="article__meta">
-      <h1 class="article__title">{{ title }}</h1>
-      <div class="article__info">
-        <span class="article__author">{{ author }}</span>
-        <span class="article__date">{{ date | date("d. M. yyyy") }}</span>
-      </div>
-    </div>
-  </header>
-
-  <div class="article__body">
-    {{ content | safe }}
-  </div>
-
-  {% if youtube_video %}
-    <div class="article__video">
-      <iframe
-        src="https://www.youtube.com/embed/{{ youtube_video }}"
-        title="YouTube video"
-        allowfullscreen
-      ></iframe>
-    </div>
-  {% endif %}
-
-  {% if URL and URL.length %}
-    <div class="article__links">
-      <h2>Odkazy</h2>
-      <ul class="article__links-list">
-        {% for link in URL %}
-          <li class="article__link-item">
-            <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">
-            
-              {% if link.url_image %}
-                <img src="{{ link.url_image }}" alt="{{ link.url_name }}">
-              {% endif %}
-              {% if link.url_name %}
-                <span>{{ link.url_name }}</span>
-              {% else %}
-                <span>{{ link.url }}</span>
-              {% endif %}
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-  {% endif %}
-
-</article>
-
-
-
 
     <footer>
       <div class="footer__overlay"></div>

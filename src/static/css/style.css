@@ -398,6 +398,7 @@ footer > section {
   display: flex;
   flex-direction: column;
   gap: 48px;
+  overflow: hidden;
 }
 .why-us h3 {
   font-size: 36px;
@@ -733,7 +734,7 @@ footer > section {
   padding: 32px;
 }
 .news-site .article-card {
-  max-width: 100%;
+  max-width: 100vw;
 }
 .news-site .card__icon path {
   fill: var(--color-gray);
